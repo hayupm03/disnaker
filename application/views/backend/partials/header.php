@@ -63,24 +63,28 @@
            <!-- Nav Item - Dashboard -->
            <li class="nav-item active">
             <li class="nav-item <?= ($this->uri->segment(1) == 'admin') ? 'active' : ''; ?>">
-    <a class="nav-link" href="<?= base_url('admin'); ?>">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Admin</span>
-    </a>
-</li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Mediator</span></a>
+            <a class="nav-link" href="<?= base_url('admin'); ?>">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Admin</span>
+            </a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Agenda</span></a>
+            <li class="nav-item active">
+            <li class="nav-item <?= ($this->uri->segment(1) == 'mediator') ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?= base_url('mediator'); ?>">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Mediator</span>
+            </a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+            <li class="nav-item <?= ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?= base_url('agenda'); ?>">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Agenda</span>
+            </a>
             </li>
 
             <!-- Nav Item - Tables -->
