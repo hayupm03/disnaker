@@ -63,7 +63,7 @@ Fixed Navigation
     <nav class="navbar navbar-expand-lg navbar-light px-0">
       <!-- logo -->
       <a class="navbar-brand logo" href="index.html">
-        <img loading="lazy" class="logo-default" src="<?= base_url('assets/') ?>images/logo.png" alt="logo" />
+        <img loading="lazy" class="logo-default" src="<?= base_url('assets/') ?>assets/images/logoo.png" alt="logo" />
         <img loading="lazy" class="logo-white" src="<?= base_url('assets/') ?>images/logo-white.png" alt="logo" />
       </a>
       <!-- /logo -->
@@ -81,7 +81,7 @@ Fixed Navigation
             
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="about.html">About Us</a>
+            <a class="nav-link" href="about.html">Agenda</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="service.html">Services</a>

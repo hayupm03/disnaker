@@ -1,10 +1,10 @@
 <div class="hero-slider">
-	<div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url('assets/source/') ?>images/slider/slider-bg-1.jpg);">
+	<div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url('assets/') ?>images/slider/disnaker.jpeg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Crafting Digital <br>
-						Experience</h1>
+					<h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Dinas Tenaga Kerja <br>
+					Kota Semarang</h1>
 					<p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Lorem ipsum dolor sit amet,
 						consectetur adipisicing elit. Quod, <br> veritatis tempore nostrum id
 						officia quaerat eum corrupti, <br> ipsa aliquam velit.</p>
@@ -14,12 +14,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url('assets/source/') ?>images/slider/slider-bg-2.jpg);">
+	<div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url('assets/') ?>images/slider/disnaker.jpeg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<h1 data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".1">We Combine Design <br> and
-						Creativity</h1>
+					<h1 data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".1">Dinas Tenaga Kerja <br> Kota
+						Semarang</h1>
 					<p data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".5">Create just what you need
 						for your Perfect Website. Choose from a wide range
 						<br> of Elements & simply put them on our Canvas.</p>

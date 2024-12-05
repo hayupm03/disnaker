@@ -4,20 +4,20 @@
     <div class="container">
       <div class="row justify-content-around">
         <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-          <h3>about</h3>
-          <p>Integer posuere erat a ante venenati dapibus posuere velit aliquet. Fusce dapibus, tellus cursus commodo, tortor mauris sed posuere.</p>
+          <h3>Alamat</h3>
+          <p>Jl. Ki Mangunsarkoro, No. 21, Kel. Karangkidul, Kec. Semarang Tengah, Kota Semarang.</p>
         </div>
         <!-- End of .col-sm-3 -->
 
         <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
           <ul>
             <li>
-              <h3>Our Services</h3>
+              <h3>Kontak Kami</h3>
             </li>
-            <li><a href="service.html">Ui/Ux Design</a></li>
-            <li><a href="service.html">Graphic Design</a></li>
-            <li><a href="service.html">Web Design</a></li>
-            <li><a href="service.html">Web Development</a></li>
+            <li><a href="service.html">disnaker@semarangkota.go.id</a></li>
+            <li><a href="service.html">(024) 8440335</a></li>
+            <li><a href="service.html"></a></li>
+            <li><a href="service.html"></a></li>
           </ul>
         </div>
         <!-- End of .col-sm-3 -->
@@ -25,12 +25,13 @@
         <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
           <ul>
             <li>
-              <h3>Quick Links</h3>
+              <h3>Jam Operasional</h3>
             </li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="blog.html">Blogs</a></li>
-            <li><a href="404.html">404</a></li>
+            <li><a href="about.html">Senin 08.00 - 16.00</a></li>
+            <li><a href="service.html">Selasa 08.00 - 16.00</a></li>
+            <li><a href="blog.html">Rabu 08.00 - 16.00</a></li>
+            <li><a href="404.html">Kamis 08.00 - 16.00</a></li>
+            <li><a href="404.html">Jumat 07.30 - 14.00</a></li>
           </ul>
         </div>
         <!-- End of .col-sm-3 -->
@@ -38,12 +39,13 @@
         <div class="col-lg-3 col-md-6">
           <ul>
             <li>
-              <h3>Connect with us Socially</h3>
+              <h3>social media</h3>
             </li>
-            <li><a href="https://www.facebook.com/themefisher/">Facebook</a></li>
-            <li><a href="https://www.twitter.com/themefisher/">Twitter</a></li>
-            <li><a href="https://www.youtube.com/channel/UCx9qVW8VF0LmTi4OF2F8YdA">Youtube</a></li>
-            <li><a href="https://www.github.com/themefisher/">Github</a></li>
+            <li><a href="https://www.facebook.com/disnakersmg">Facebook</a></li>
+            <li><a href="https://www.instagram.com/disnakersmg">Instagram</a></li>
+            <li><a href="https://x.com/disnakersmg">Twitter</a></li>
+            <li><a href="https://www.youtube.com/disnakersmg">Youtube</a></li>
+            <li><a href="https://www.tiktok.com/@disnakersmg">Tiktok</a></li>
           </ul>
         </div>
         <!-- End of .col-sm-3 -->
