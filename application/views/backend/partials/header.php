@@ -42,10 +42,13 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+            <li class="nav-item <?= ($this->uri->segment(1) == 'dashboard') ? 'active' : ''; ?>">
+                <a class="nav-link" href="<?= base_url('dashboard'); ?>">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Dashboard</span>
+                </a>
             </li>
 
             <!-- Divider -->
@@ -57,17 +60,34 @@
             </div>
 
             <!-- Nav Item - Charts -->
+           <!-- Nav Item - Dashboard -->
+           <li class="nav-item active">
+            <li class="nav-item <?= ($this->uri->segment(1) == 'admin') ? 'active' : ''; ?>">
+    <a class="nav-link" href="<?= base_url('admin'); ?>">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Admin</span>
+    </a>
+</li>
+
+            <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Mediator</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span>Agenda</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Laporan</span></a>
             </li>
 
             <!-- Divider -->
