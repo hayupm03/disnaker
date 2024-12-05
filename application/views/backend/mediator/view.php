@@ -33,7 +33,7 @@
                 <?php endforeach; ?>
             <?php else : ?>
                 <tr>
-                    <td colspan="4" class="text-center">Tidak ada data admin.</td>
+                    <td colspan="7" class="text-center">Tidak ada data admin.</td>
                 </tr>
             <?php endif; ?>
         </tbody>

@@ -42,7 +42,7 @@
                 <?php endforeach; ?>
             <?php else : ?>
                 <tr>
-                    <td colspan="4" class="text-center">Tidak ada data agenda.</td>
+                    <td colspan="12" class="text-center">Tidak ada data agenda.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
