@@ -5,16 +5,16 @@
 				<div class="col-md-12 text-center">
 					<h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Dinas Tenaga Kerja <br>
 					Kota Semarang</h1>
-					<p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Lorem ipsum dolor sit amet,
-						consectetur adipisicing elit. Quod, <br> veritatis tempore nostrum id
-						officia quaerat eum corrupti, <br> ipsa aliquam velit.</p>
+					<p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Disnaker melalui layanan mediasi hadir 
+						untuk membantu menyelesaikan perselisihan hubungan industrial secara adil dan profesional. 
+						Dengan pendekatan yang transparan dan berdasarkan hukum ketenagakerjaan, mediasi ini bertujuan menciptakan kesepakatan yang saling menguntungkan bagi pekerja dan pengusaha.</p>
 					<a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn btn-main"
 						href="service.html">Explore Us</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url('assets/') ?>images/slider/disnaker.jpeg);">
+	<div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url('assets/') ?>images/slider/disnakerr.jpg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 text-center">

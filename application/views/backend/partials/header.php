@@ -80,18 +80,20 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-            <li class="nav-item <?= ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?= base_url('agenda'); ?>">
+            <li class="nav-item <?= ($this->uri->segment(1) == 'agenda_mediasi') ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?= base_url('agenda_mediasi'); ?>">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Agenda</span>
             </a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Laporan</span></a>
+            <li class="nav-item active">
+            <li class="nav-item <?= ($this->uri->segment(1) == 'laporan') ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?= base_url('laporan'); ?>">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Laporan</span>
+            </a>
             </li>
 
             <!-- Divider -->

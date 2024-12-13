@@ -1,10 +1,18 @@
+<style>
+    .table th {
+    white-space: nowrap;
+}
+</style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Agenda Mediasi</h1>
+        <a href="<?php echo base_url('agenda/add'); ?>" class="btn btn-primary">
+            Tambah Agenda
+        </a>
     </div>
+    <div class="table-responsive">
     <table class="table table-bordered table-striped mt-4">
         <thead>
             <tr>
@@ -23,8 +31,8 @@
             </tr>
         </thead>
         <tbody>
-            <?php if (!empty($admins)) : ?>
-                <?php foreach ($admins as $admin) : ?>
+            <?php if (!empty($agendas)) : ?>
+                <?php foreach ($agendas as $agenda) : ?>
                     <tr>
                         <td><?= htmlspecialchars($agenda['id']); ?></td>
                         <td><?= htmlspecialchars($agenda['nama_pihak1']); ?></td>
@@ -47,4 +55,5 @@
             <?php endif; ?>
         </tbody>
     </table>
+    </div>
 </div>

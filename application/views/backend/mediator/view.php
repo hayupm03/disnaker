@@ -4,6 +4,11 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Daftar Mediator</h1>
+        <div class="text-right mb-3">
+        <a href="<?php echo base_url('mediator/add'); ?>" class="btn btn-primary">
+            Tambah Mediator
+        </a>
+    </div>
     </div>
 
     <table class="table table-bordered table-striped mt-4">
@@ -20,9 +25,9 @@
         </thead>
         <tbody>
             <?php if (!empty($mediators)) : ?>
-                <?php foreach ($mediators as $mediators) : ?>
+                <?php foreach ($mediators as $mediator) : ?>
                     <tr>
-                        <td><?= htmlspecialchars($mediator['id']); ?></td>
+                        <td><?= htmlspecialchars($mediator['id_mediator']); ?></td>
                         <td><?= htmlspecialchars($mediator['nama']); ?></td>
                         <td><?= htmlspecialchars($mediator['telp']); ?></td>
                         <td><?= htmlspecialchars($mediator['nip']); ?></td>

@@ -73,33 +73,22 @@ Fixed Navigation
       </button>
 
       <div class="collapse navbar-collapse" id="navigation">
-        <ul class="navbar-nav ml-auto text-center">
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#">
-              Home
-            </a>
-            
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="about.html">Agenda</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="service.html">Services</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="portfolio.html">Portfolio</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="team.html">Team</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="pricing.html">Pricing</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </li>
-        </ul>
+          <ul class="navbar-nav ml-auto text-center">
+              <li class="nav-item dropdown <?php echo ($this->uri->segment(1) == '') ? 'active' : ''; ?>">
+                  <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>">
+                      Home
+                  </a>
+              </li>
+              <li class="nav-item <?php echo ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
+                  <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
+              </li>
+              <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
+                  <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
+              </li>
+              <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
+                  <a class="nav-link" href="<?php echo base_url('kontak'); ?>">kontak</a>
+              </li>
+          </ul>
       </div>
     </nav>
     <!-- /main nav -->
