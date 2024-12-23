@@ -6,10 +6,8 @@
 					<h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Dinas Tenaga Kerja <br>
 					Kota Semarang</h1>
 					<p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Disnaker melalui layanan mediasi hadir 
-						untuk membantu menyelesaikan perselisihan hubungan industrial secara adil dan profesional. 
-						Dengan pendekatan yang transparan dan berdasarkan hukum ketenagakerjaan, mediasi ini bertujuan menciptakan kesepakatan yang saling menguntungkan bagi pekerja dan pengusaha.</p>
-					<a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn btn-main"
-						href="service.html">Explore Us</a>
+						untuk membantu 
+						<br> menyelesaikan perselisihan hubungan industrial secara adil dan profesional.</p> 
 				</div>
 			</div>
 		</div>
@@ -20,11 +18,8 @@
 				<div class="col-md-12 text-center">
 					<h1 data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".1">Dinas Tenaga Kerja <br> Kota
 						Semarang</h1>
-					<p data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".5">Create just what you need
-						for your Perfect Website. Choose from a wide range
-						<br> of Elements & simply put them on our Canvas.</p>
-					<a data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".8" class="btn btn-main"
-						href="service.html">Explore Us</a>
+					<p data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".5">Dengan pendekatan yang transparan dan berdasarkan hukum ketenagakerjaan, 
+						<br> mediasi ini bertujuan menciptakan kesepakatan yang saling menguntungkan bagi pekerja dan pengusaha</p>
 				</div>
 			</div>
 		</div>
@@ -52,7 +47,7 @@ Start About Section
     <div class="row">
 
       <div class="col-md-4 text-center d-none d-md-block">
-        <img loading="lazy" src="<?= base_url('assets/source/') ?>images/about/member.jpg" class="img-fluid inline-block" alt="">
+        <img loading="lazy" src="<?= base_url('assets/') ?>images/about/member.jpg" class="img-fluid inline-block" alt="">
       </div>
       <div class="col-md-8">
         <div class="row text-center">
@@ -93,58 +88,55 @@ Start About Section
 <!--
 Start About Section
 ==================================== -->
-<section class="about-2 section" id="about">
+<section class="about-2 section pb-0" id="about">
 	<div class="container">
 		<div class="row justify-content-center">
 			<!-- section title -->
 			<div class="col-lg-6">
-				<div class="title text-center">
-					<h2>We Are Bingo Agency</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam reprehenderit accusamus labore iusto,
-						aut, eum itaque illo totam tempora eius.</p>
+				<div class="title text-center mb-0 pb-0">
+					<h2>Syarat Mediasi</h2>
+					<p>di Dinas Tenaga Kerja Kota Semarang</p>
 					<div class="border"></div>
 				</div>
 			</div>
 			<!-- /section title -->
 		</div>
 
-		<div class="row">
-
+		<div class="row align-items-center">
 			<div class="col-md-6 mb-4 mb-md-0">
-				<img loading="lazy" src="images/about/about-2.png" class="img-fluid" alt="">
+				<img loading="lazy" src="assets/images/about/2.png" class="img-fluid" alt="">
 			</div>
 			<div class="col-md-6">
 				<ul class="checklist">
-					<li>Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-					<li>Aenean quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-					<li>Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
-					<li>Etiam porta sem multipage evint landing magna mollis euismod a pharetra augue.</li>
-					<li>Aenean quam. Pellentesque ornare sem laca quam venenatis vestibulum.</li>
+					<li>Mengajukan surat permohonan mediasi secara resmi yang ditandatangani oleh pihak pelapor.</li>
+					<li>Melampirkan dokumen pendukung seperti kontrak kerja, surat PHK, atau dokumen lain yang relevan.</li>
+					<li>Identitas lengkap dari pihak pelapor dan pihak yang dilaporkan.</li>
+					<li>Perselisihan merupakan wewenang Disnaker dan belum masuk ke ranah hukum.</li>
+					<li>Bersedia mengikuti proses mediasi sesuai prosedur yang ditetapkan.</li>
 				</ul>
-				<a href="about.html" class="btn btn-main mt-20">Learn More</a>
 			</div>
 		</div> <!-- End row -->
 	</div> <!-- End container -->
-</section> <!-- End section -->
+</section>
 
-<!--
-Start Call To Action
+ <!-- End section -->
+
+<!--Start Call To Action
 ==================================== -->
 <section class="call-to-action section">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-xl-6 col-lg-8 text-center">
 				<h2>Let's Create Something Together</h2>
-				<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin bibendum auctor, nisi elit consequat ipsum,
-					nesagittis sem nid elit. Duis sed odio sitain elit.</p>
+				<p>Hubungi kami untuk informasi lebih lanjut atau konsultasi. Tim kami siap memberikan solusi terbaik untuk kebutuhan Anda.</p>
 				<a href="contact.html" class="btn btn-main">Contact Us</a>
 			</div>
 		</div> <!-- End row -->
 	</div> <!-- End container -->
-</section> <!-- End section -->
+</section>
 
-<!--
-Start Counter Section
+
+<!--Start Counter Section
 ==================================== -->
 <section class="counter-wrapper section-sm">
 	<div class="container">
@@ -209,80 +201,6 @@ Start Counter Section
 	</div> <!-- end container -->
 </section> <!-- end section -->
 
-<!-- Start Testimonial
-=========================================== -->
-		
-	<section class="testimonial section" id="testimonial">
-		<div class="container">
-			<div class="row">				
-				<div class="col-lg-12">
-					<!-- testimonial wrapper -->
-					<div class="testimonial-slider">
-						<!-- testimonial single -->
-						<div class="item text-center">
-							<i class="tf-ion-chatbubbles"></i>
-							<!-- client info -->
-							<div class="client-details">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-							</div>
-							<!-- /client info -->
-							<!-- client photo -->
-							<div class="client-thumb">
-								<img loading="lazy" src="images/client-logo/clients-1.jpg" class="img-fluid" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>William Martin</h3>
-								<span>CEO , Company Name</span>
-							</div>
-							<!-- /client photo -->
-						</div>
-						<!-- /testimonial single -->
-				
-						<!-- testimonial single -->
-						<div class="item text-center">
-							<i class="tf-ion-chatbubbles"></i>
-							<!-- client info -->
-							<div class="client-details">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-							</div>
-							<!-- /client info -->
-							<!-- client photo -->
-							<div class="client-thumb">
-								<img loading="lazy" src="images/client-logo/clients-2.jpg" class="img-fluid" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>Emma Harrison</h3>
-								<span>CEO , Company Name</span>
-							</div>
-							<!-- /client photo -->
-						</div>
-						<!-- /testimonial single -->
-					
-						<!-- testimonial single -->
-						<div class="item text-center">
-							<i class="tf-ion-chatbubbles"></i>
-							<!-- client info -->
-							<div class="client-details">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum nulla, soluta dolorum. Eos earum, magni asperiores, unde corporis labore, enim, voluptatum officiis voluptates alias natus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, quia?</p>
-							</div>
-							<!-- /client info -->
-							<!-- client photo -->
-							<div class="client-thumb">
-								<img loading="lazy" src="images/client-logo/clients-3.jpg" class="img-fluid" alt="">
-							</div>
-							<div class="client-meta">
-								<h3>Alexander Lucas</h3>
-								<span>CEO , Company Name</span>
-							</div>
-							<!-- /client photo -->
-						</div>
-						<!-- /testimonial single -->
-					</div>
-				</div> 		<!-- end col lg 12 -->
-			</div>	    <!-- End row -->
-		</div>       <!-- End container -->
-	</section>    <!-- End Section -->
-
 <!--
 Start Blog Section
 =========================================== -->
@@ -292,7 +210,7 @@ Start Blog Section
 			<!-- section title -->
 			<div class="col-xl-6 col-lg-8">
 				<div class="title text-center ">
-					<h2> Latest <span class="color">Posts</span></h2>
+					<h2> Riwayat <span class="color">Mediasi</span></h2>
 					<div class="border"></div>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus facere accusamus, reprehenderit libero inventore nam.</p>
 				</div>
@@ -305,7 +223,7 @@ Start Blog Section
 			<article class="col-lg-4 col-md-6">
 				<div class="post-item">
 					<div class="media-wrapper">
-						<img loading="lazy" src="images/blog/post-1.jpg" alt="amazing caves coverimage" class="img-fluid">
+						<img loading="lazy" src="assets/images/blog/post-1.jpg" alt="amazing caves coverimage" class="img-fluid">
 					</div>
 
 					<div class="content">
@@ -322,7 +240,7 @@ Start Blog Section
 			<article class="col-lg-4 col-md-6">
 				<div class="post-item">
 					<div class="media-wrapper">
-						<img loading="lazy" src="images/blog/post-2.jpg" alt="amazing caves coverimage" class="img-fluid">
+						<img loading="lazy" src="assets/images/blog/post-2.jpg" alt="amazing caves coverimage" class="img-fluid">
 					</div>
 
 					<div class="content">
@@ -339,7 +257,7 @@ Start Blog Section
 			<article class="col-lg-4 col-md-6">
 				<div class="post-item">
 					<div class="media-wrapper">
-						<img loading="lazy" src="images/blog/post-3.jpg" alt="amazing caves coverimage" class="img-fluid">
+						<img loading="lazy" src="assets/images/blog/post-3.jpg" alt="amazing caves coverimage" class="img-fluid">
 					</div>
 
 					<div class="content">

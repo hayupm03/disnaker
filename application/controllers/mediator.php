@@ -10,12 +10,14 @@ class Mediator extends CI_Controller {
 
     public function index() {
         // Mengambil data mediator dari model
-        $data['mediators'] = $this->Mediator_model->get_mediators(); // Perbaiki nama model
-
+        $data['mediators'] = $this->Mediator_model->get_mediators(); 
+    
+        // Memuat tampilan dengan data
         $this->load->view('backend/partials/header', $data);
         $this->load->view('backend/mediator/view', $data);
-        $this->load->view('backend/partials/footer', $data);
+        $this->load->view('backend/partials/footer');
     }
+    
 
     public function add() {
         // Set validation rules
@@ -36,5 +38,31 @@ class Mediator extends CI_Controller {
             $this->Mediator_model->add_mediator();
             redirect('mediator'); // Redirect to the mediator list page
         }
+    }
+
+    public function edit($id) {
+        $data['mediator'] = $this->Mediator_model->get_mediator_by_id($id); // Mengambil data mediator berdasarkan ID
+
+        if ($this->input->post()) {
+            $update_data = [
+                'nama' => $this->input->post('nama'),
+                'telp' => $this->input->post('telp'),
+                'nip' => $this->input->post('nip'),
+                'bidang' => $this->input->post('bidang'),
+                'email' => $this->input->post('email'),
+            ];
+
+            $this->Mediator_model->edit_mediator($id, $update_data);
+            redirect('mediator');
+        }
+
+        $this->load->view('backend/partials/header', $data);
+        $this->load->view('backend/mediator/edit', $data);
+        $this->load->view('backend/partials/footer');
+    }
+
+    public function delete($id) {
+        $this->Mediator_model->delete_mediator($id);
+        redirect('mediator');
     }
 }

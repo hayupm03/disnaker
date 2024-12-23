@@ -54,8 +54,8 @@
     </div> <!-- end container -->
   </div>
   <div class="footer-bottom">
-    <h5>&copy; Copyright 2020. All rights reserved.</h5>
-    <h6>Design and Developed by <a href="https://themefisher.com/">Themefisher</a></h6>
+    <h5>&copy; Copyright 2024. All rights reserved.</h5>
+    <h6>Design and Developed by <a href="https://www.instagram.com/hyupm_/">hayupambudi</a></h6>
   </div>
 </footer> <!-- end footer -->
 

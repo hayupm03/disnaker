@@ -1,43 +1,70 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class laporan extends CI_Controller {
+class Laporan extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('laporan_model'); // Memuat model
+        $this->load->model('Laporan_model');
+        $this->load->library('form_validation');
     }
 
+    // Menampilkan daftar laporan
     public function index() {
-        // Mengambil data admin dari model
-        $data['laporans'] = $this->laporan_model->get_laporans();
+        $data['laporans'] = $this->Laporan_model->get_laporans();
 
-        $this->load->view('backend/partials/header', $data);
+        $this->load->view('backend/partials/header');
         $this->load->view('backend/laporan/view', $data);
-        $this->load->view('backend/partials/footer', $data);
+        $this->load->view('backend/partials/footer');
     }
+
+    // Tambah laporan
     public function add() {
-        // Set validation rules
-        $this->form_validation->set_rules('id_laporan', 'ID Laporan', 'required|is_unique[lapora .id_laporan]');
-        $this->form_validation->set_rules('id_agenda', 'ID Agenda', 'required');
-        $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak Satu', 'required');
-        $this->form_validation->set_rules('nama_pihak_dua', 'Nama Pihak Dua', 'required');
+        $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak 1', 'required');
+        $this->form_validation->set_rules('nama_pihak_dua', 'Nama Pihak 2', 'required');
         $this->form_validation->set_rules('tgl_agenda', 'Tanggal Agenda', 'required');
         $this->form_validation->set_rules('tgl_penutupan', 'Tanggal Penutupan', 'required');
         $this->form_validation->set_rules('jenis_kasus', 'Jenis Kasus', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('hasil_mediasi', 'Hasil Mediasi', 'required|valid_email');
-        
+        $this->form_validation->set_rules('hasil_mediasi', 'Hasil Mediasi', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            // Load view with validation errors
             $this->load->view('backend/partials/header');
             $this->load->view('backend/laporan/add');
             $this->load->view('backend/partials/footer');
         } else {
-            // Save mediator data to the database
-            $this->Laporan_model->add_mediator();
-            redirect('laporan/list'); // Redirect to the mediator list page
+            $data = $this->input->post();
+            $this->Laporan_model->add_laporan($data);
+            redirect('laporan');
         }
+    }
+
+    // Edit laporan
+    public function edit($id) {
+        $data['laporan'] = $this->Laporan_model->get_laporan_by_id($id);
+
+        $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak 1', 'required');
+        $this->form_validation->set_rules('nama_pihak_dua', 'Nama Pihak 2', 'required');
+        $this->form_validation->set_rules('tgl_agenda', 'Tanggal Agenda', 'required');
+        $this->form_validation->set_rules('tgl_penutupan', 'Tanggal Penutupan', 'required');
+        $this->form_validation->set_rules('jenis_kasus', 'Jenis Kasus', 'required');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('hasil_mediasi', 'Hasil Mediasi', 'required');
+
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('backend/partials/header');
+            $this->load->view('backend/laporan/edit', $data);
+            $this->load->view('backend/partials/footer');
+        } else {
+            $update_data = $this->input->post();
+            $this->Laporan_model->update_laporan($id, $update_data);
+            redirect('laporan');
+        }
+    }
+
+    // Hapus laporan
+    public function delete($id) {
+        $this->Laporan_model->delete_laporan($id);
+        redirect('laporan');
     }
 }

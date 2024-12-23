@@ -63,8 +63,8 @@ Fixed Navigation
     <nav class="navbar navbar-expand-lg navbar-light px-0">
       <!-- logo -->
       <a class="navbar-brand logo" href="index.html">
-        <img loading="lazy" class="logo-default" src="<?= base_url('assets/') ?>assets/images/logoo.png" alt="logo" />
-        <img loading="lazy" class="logo-white" src="<?= base_url('assets/') ?>images/logo-white.png" alt="logo" />
+        <img loading="lazy" class="logo-default" src="<?= base_url('assets/') ?>images/logoo.png" alt="logo" style="width: 40px; height: auto;"/>
+        <img loading="lazy" class="logo-white" src="<?= base_url('assets/') ?>images/disnaker.png" alt="logo" style="width: 120px; height: auto;"/>
       </a>
       <!-- /logo -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"

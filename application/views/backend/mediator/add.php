@@ -30,9 +30,9 @@
             <label for="bidang">Bidang</label>
             <select class="form-control" id="bidang" name="bidang">
                 <option value="">Pilih Bidang</option>
-                <option value="Hukum">Hukum</option>
-                <option value="Ekonomi">Ekonomi</option>
-                <option value="Pendidikan">Pendidikan</option>
+                <option value="Hukum">Hubungan Industrial</option>
+                <option value="Ekonomi">Pelatihan</option>
+                <option value="Pendidikan">Penempatan</option>
                 <!-- Tambahkan opsi bidang lainnya sesuai kebutuhan -->
             </select>
             <?php echo form_error('bidang', '<small class="text-danger">', '</small>'); ?>

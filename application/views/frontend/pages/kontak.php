@@ -18,49 +18,38 @@
  <section class="contact-us" id="contact">
  	<div class="container">
  		<div class="row justify-content-center">
-			 <!-- section title -->
- 			<div class="col-xl-6 col-lg-8">
-				<div class="title text-center">
-					<h2>Get In Touch</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate facilis eveniet maiores ab maxime nam
-						ut numquam molestiae quaerat incidunt?</p>
-					<div class="border"></div>
-				</div>
-			</div>
-			<!-- /section title -->
 		</div>
  		<div class="row">
  			<!-- Contact Details -->
  			<div class="contact-details col-md-6 ">
- 				<h3 class="mb-3">Contact Details</h3>
- 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, vero, provident, eum eligendi blanditiis ex
- 					explicabo vitae nostrum facilis asperiores dolorem illo officiis ratione vel fugiat dicta laboriosam labore
- 					adipisci.</p>
+ 				<h3 class="mb-3">Kontak Detail</h3>
+ 				<p>Jika Anda memiliki pertanyaan atau membutuhkan informasi lebih lanjut, silakan hubungi kami melalui:</p>
  				<ul class="contact-short-info mt-4">
  					<li class="mb-3">
  						<i class="tf-ion-ios-home"></i>
- 						<span>Khaja Road, Bayzid, Chittagong, Bangladesh</span>
+ 						<span>Jl. Ki Mangunsarkoro, No. 21, Kel. Karangkidul, Kec. Semarang Tengah, Kota Semarang.</span>
  					</li>
  					<li class="mb-3">
  						<i class="tf-ion-android-phone-portrait"></i>
- 						<span>Phone: +880-31-000-000</span>
+ 						<span>Phone: (024) 8440335</span>
  					</li>
  					<li class="mb-3">
  						<i class="tf-ion-android-globe"></i>
- 						<span>Fax: +880-31-000-000</span>
+ 						<span>Fax: 62248440335</span>
  					</li>
  					<li>
  						<i class="tf-ion-android-mail"></i>
- 						<span>Email: hello@meghna.com</span>
+ 						<span>Email: disnaker@semarangkota.go.id</span>
  					</li>
  				</ul>
  				<!-- Footer Social Links -->
  				<div class="social-icon">
  					<ul>
- 						<li><a href="https://themefisher.com/"><i class="tf-ion-social-facebook"></i></a></li>
- 						<li><a href="https://themefisher.com/"><i class="tf-ion-social-twitter"></i></a></li>
- 						<li><a href="https://themefisher.com/"><i class="tf-ion-social-dribbble-outline"></i></a></li>
- 						<li><a href="https://themefisher.com/"><i class="tf-ion-social-linkedin-outline"></i></a></li>
+ 						<li><a href="https://www.facebook.com/disnakersmg/"><i class="tf-ion-social-facebook"></i></a></li>
+ 						<li><a href="https://x.com/disnakersmg"><i class="tf-ion-social-twitter"></i></a></li>
+ 						<li><a href="https://www.instagram.com/disnakersmg"><i class="tf-ion-social-instagram"></i></a></li>
+ 						<li><a href="https://www.youtube.com/disnakersmg"><i class="tf-ion-social-youtube"></i></a></li>
+						 <li><a href="https://api.whatsapp.com/send?phone=62248440335"><i class="tf-ion-social-whatsapp"></i></a></li>
  					</ul>
  				</div>
  				<!--/. End Footer Social Links -->
@@ -86,7 +75,7 @@
  						<textarea rows="6" placeholder="Message" class="form-control" name="message" id="message" required></textarea>
  					</div>
  					<div id="cf-submit">
- 						<input type="submit" id="contact-submit" class="btn btn-transparent" value="Submit">
+ 						<input type="submit" id="contact-submit" class="btn btn-black" value="Submit">
  					</div>
 
  				</form>

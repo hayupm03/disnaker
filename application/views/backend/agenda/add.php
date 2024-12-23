@@ -10,7 +10,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Tambah Agenda Mediasi</h6>
         </div>
         <div class="card-body">
-            <form action="<?php echo base_url('agenda/add'); ?>" method="post">
+            <form action="<?php echo base_url('agenda_mediasi/add'); ?>" method="post">
                 <div class="form-group">
                     <label for="nama_pihak1">Nama Pihak 1</label>
                     <input type="text" class="form-control" id="nama_pihak1" name="nama_pihak1" value="<?php echo set_value('nama_pihak1'); ?>">
@@ -25,11 +25,6 @@
                     <label for="nama_kasus">Nama Kasus</label>
                     <input type="text" class="form-control" id="nama_kasus" name="nama_kasus" value="<?php echo set_value('nama_kasus'); ?>">
                     <?php echo form_error('nama_kasus', '<small class="text-danger">', '</small>'); ?>
-                </div>
-                <div class="form-group">
-                    <label for="tujuan">Tujuan</label>
-                    <input type="text" class="form-control" id="tujuan" name="tujuan" value="<?php echo set_value('tujuan'); ?>">
-                    <?php echo form_error('tujuan', '<small class="text-danger">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="nama_mediator">Nama Mediator</label>

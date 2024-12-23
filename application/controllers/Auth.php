@@ -26,7 +26,7 @@ class Auth extends CI_Controller {
             }
         }
 
-        $this->load->view('backend/auth/login');
+        $this->load->view('auth/login');
     }
 
     public function register() {
@@ -46,11 +46,11 @@ class Auth extends CI_Controller {
             }
         }
 
-        $this->load->view('backend/auth/register');
+        $this->load->view('auth/register');
     }
 
     public function logout() {
         $this->session->unset_userdata('logged_in');
-        redirect('backend/auth/login');
+        redirect('auth/login');
     }
 }
