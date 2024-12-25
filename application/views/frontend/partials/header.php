@@ -79,15 +79,35 @@ Fixed Navigation
                       Home
                   </a>
               </li>
+              <ul class="navbar-nav ml-auto d-flex align-items-center">
+              <ul class="navbar-nav ml-auto d-flex align-items-center">
+              <ul class="navbar-nav ml-auto d-flex align-items-center">
+              <!-- Nav Item - Agenda -->
               <li class="nav-item <?php echo ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
                   <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
               </li>
+              
+              <!-- Nav Item - Arsip -->
               <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
                   <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
               </li>
+              
+              <!-- Nav Item - Kontak -->
               <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
-                  <a class="nav-link" href="<?php echo base_url('kontak'); ?>">kontak</a>
+                  <a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak</a>
               </li>
+              
+              <!-- Nav Item - Tiga Titik (Dropdown) -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v text-black"></i> <!-- Tiga titik (Ellipsis) dengan warna yang jelas -->
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item <?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(2) == 'login') ? 'active' : ''; ?>" href="<?php echo base_url('auth/login'); ?>">Login</a>
+                      <a class="dropdown-item <?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(2) == 'register') ? 'active' : ''; ?>" href="<?php echo base_url('auth/register'); ?>">Register</a>
+                  </div>
+              </li>
+          </ul>
           </ul>
       </div>
     </nav>

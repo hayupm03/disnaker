@@ -13,12 +13,18 @@
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/sbadmin/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/sbadmin/') ?>css/sb-admin-2.min.css" rel="stylesheet">
+
+    <style>
+        /* Custom background color */
+        .bg-gradient-primary {
+            background-color: #a3d8f4; /* Soft blue background */
+            background: linear-gradient(to right, #a3d8f4, #c4e2f7); /* Optional: soft gradient */
+        }
+    </style>
 
 </head>
 
@@ -30,7 +36,7 @@
             <!-- Nested Row within Card Body -->
             <div class="row">
                 <!-- Background Image Section -->
-                <div class="col-lg-6 d-none d-lg-block" style="background-image: url('<?= base_url('assets/images/company/gallery-1.jpg') ?>'); background-size: cover; background-position: center center; height: 100vh;">
+                <div class="col-lg-6 d-none d-lg-block" style="background-image: url('<?= base_url('assets/images/company/undraw.png') ?>'); background-size: contain; background-position: center center; height: 100vh; background-repeat: no-repeat;">
                     <!-- Optional Image Inside Background -->
                     <!-- <img src="<?= base_url('assets/sbadmin/your-image.jpg') ?>" alt=""> -->
                 </div>
@@ -61,11 +67,19 @@
                                     <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Password" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" name="confirm_password" placeholder="Repeat Password" required>
+                                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" name="confirm_password" placeholder="Konfirmasi Password" required>
                                 </div>
                             </div>
+                            <!-- Company Name -->
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="exampleCompanyName" name="perusahaan" placeholder="Nama Perusahaan" required>
+                            </div>
+                            <!-- Address -->
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" id="exampleCompanyName" name="alamat" placeholder="Alamat" required>
+                            </div>
                             <!-- Register Button -->
-                            <button type="submit" class="btn btn-primary btn-user btn-block">Register Account</button>
+                            <button type="submit" class="btn btn-user btn-block" style="background-color: #5bc0de; border-color: #5bc0de; color: white;">Register Account</button>
                         </form>
                         <hr>
                         <!-- Links for Forgot Password or Login -->
@@ -82,16 +96,15 @@
     </div>
 </div>
 
+<!-- Bootstrap core JavaScript-->
+<script src="<?= base_url('assets/sbadmin/') ?>vendor/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/sbadmin/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url('assets/sbadmin/') ?>vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url('assets/sbadmin/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="<?= base_url('assets/sbadmin/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="<?= base_url('assets/sbadmin/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="<?= base_url('assets/sbadmin/') ?>js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="<?= base_url('assets/sbadmin/') ?>js/sb-admin-2.min.js"></script>
 
 </body>
 

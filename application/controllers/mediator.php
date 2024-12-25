@@ -9,7 +9,12 @@ class Mediator extends CI_Controller {
     }
 
     public function index() {
-        // Mengambil data mediator dari model
+        if (!$this->session->userdata('logged_in') || 
+            !in_array($this->session->userdata('user_type'), ['admin', 'mediator'])) {
+            $this->session->set_flashdata('error', 'Anda tidak memiliki akses ke halaman ini.');
+            redirect('auth/login');
+        }
+        
         $data['mediators'] = $this->Mediator_model->get_mediators(); 
     
         // Memuat tampilan dengan data

@@ -11,6 +11,12 @@ class Laporan extends CI_Controller {
 
     // Menampilkan daftar laporan
     public function index() {
+        if (!$this->session->userdata('logged_in') || 
+            !in_array($this->session->userdata('user_type'), ['admin', 'mediator'])) {
+            $this->session->set_flashdata('error', 'Anda tidak memiliki akses ke halaman ini.');
+            redirect('auth/login');
+        }
+        
         $data['laporans'] = $this->Laporan_model->get_laporans();
 
         $this->load->view('backend/partials/header');

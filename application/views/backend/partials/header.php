@@ -30,13 +30,13 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon">
-                    <i class="fas fa-angry"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">DISNAKER</div>
-            </a>
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+            <i class="fas fa-handshake"></i> <!-- Ikon baru -->
+        </div>
+        <div class="sidebar-brand-text mx-3">DISNAKER</div>
+    </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -46,7 +46,7 @@
             <li class="nav-item active">
             <li class="nav-item <?= ($this->uri->segment(1) == 'dashboard') ? 'active' : ''; ?>">
                 <a class="nav-link" href="<?= base_url('dashboard'); ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
@@ -64,7 +64,7 @@
            <li class="nav-item active">
             <li class="nav-item <?= ($this->uri->segment(1) == 'admin') ? 'active' : ''; ?>">
             <a class="nav-link" href="<?= base_url('admin'); ?>">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fas fa-fw fa-user-cog"></i>
                 <span>Admin</span>
             </a>
             </li>
@@ -82,7 +82,7 @@
             <li class="nav-item active">
             <li class="nav-item <?= ($this->uri->segment(1) == 'agenda_mediasi') ? 'active' : ''; ?>">
             <a class="nav-link" href="<?= base_url('agenda_mediasi'); ?>">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fas fa-fw fa-calendar-alt"></i>
                 <span>Agenda</span>
             </a>
             </li>
@@ -91,7 +91,7 @@
             <li class="nav-item active">
             <li class="nav-item <?= ($this->uri->segment(1) == 'laporan') ? 'active' : ''; ?>">
             <a class="nav-link" href="<?= base_url('laporan'); ?>">
-                <i class="fas fa-fw fa-chart-area"></i>
+                <i class="fas fa-fw fa-file-alt"></i>
                 <span>Laporan</span>
             </a>
             </li>
@@ -142,4 +142,24 @@
                         </li>
                     </ul>
                 </nav>
+
+                <!-- Logout Modal-->
+                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- End of Topbar -->

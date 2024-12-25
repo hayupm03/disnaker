@@ -9,7 +9,12 @@ class Agenda_mediasi extends CI_Controller {
     }
 
     public function index() {
-        // Mengambil data admin dari model
+        if (!$this->session->userdata('logged_in') || 
+            !in_array($this->session->userdata('user_type'), ['admin', 'mediator'])) {
+            $this->session->set_flashdata('error', 'Anda tidak memiliki akses ke halaman ini.');
+            redirect('auth/login');
+        }
+        
         $data['agendas'] = $this->agenda_model->get_agendas();
 
         $this->load->view('backend/partials/header', $data);
@@ -94,6 +99,7 @@ class Agenda_mediasi extends CI_Controller {
         $this->form_validation->set_rules('deskripsi_kasus', 'Deskripsi Kasus', 'required');
     
         if ($this->form_validation->run() === FALSE) {
+            // Jika validasi gagal, kembali ke form edit
             $this->edit($id);
         } else {
             // Update data agenda
@@ -101,7 +107,6 @@ class Agenda_mediasi extends CI_Controller {
                 'nama_pihak1' => $this->input->post('nama_pihak1'),
                 'nama_pihak2' => $this->input->post('nama_pihak2'),
                 'nama_kasus' => $this->input->post('nama_kasus'),
-                'tujuan' => $this->input->post('tujuan'),
                 'nama_mediator' => $this->input->post('nama_mediator'),
                 'tgl_mediasi' => $this->input->post('tgl_mediasi'),
                 'waktu_mediasi' => $this->input->post('waktu_mediasi'),
@@ -128,9 +133,9 @@ class Agenda_mediasi extends CI_Controller {
             $this->agenda_model->update_agenda($id, $agenda_data);
     
             // Redirect ke halaman daftar agenda setelah berhasil update
-            redirect('agenda');
+            redirect('agenda_mediasi');
         }
-    }   
+    }    
 
     public function delete($id) {
         $this->agenda_model->delete_agenda($id);
