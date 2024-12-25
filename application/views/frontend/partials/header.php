@@ -98,15 +98,12 @@ Fixed Navigation
               </li>
               
               <!-- Nav Item - Tiga Titik (Dropdown) -->
-              <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v text-black"></i> <!-- Tiga titik (Ellipsis) dengan warna yang jelas -->
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item <?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(2) == 'login') ? 'active' : ''; ?>" href="<?php echo base_url('auth/login'); ?>">Login</a>
-                      <a class="dropdown-item <?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(2) == 'register') ? 'active' : ''; ?>" href="<?php echo base_url('auth/register'); ?>">Register</a>
-                  </div>
-              </li>
+              <li class="nav-item">
+    <!-- Button Login -->
+    <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('auth/login'); ?>'">
+        Login
+    </button>
+</li>
           </ul>
           </ul>
       </div>

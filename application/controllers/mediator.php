@@ -32,21 +32,38 @@ class Mediator extends CI_Controller {
         $this->form_validation->set_rules('bidang', 'Bidang', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
-
+    
         if ($this->form_validation->run() === FALSE) {
-            // Load view with validation errors
+            // If validation fails, reload the add mediator form with errors
             $this->load->view('backend/partials/header');
             $this->load->view('backend/mediator/add');
             $this->load->view('backend/partials/footer');
         } else {
-            // Save mediator data to the database
-            $this->Mediator_model->add_mediator();
-            redirect('mediator'); // Redirect to the mediator list page
+            // Prepare data for insertion
+            $data = array(
+                'nama'     => $this->input->post('nama'),
+                'telp'     => $this->input->post('telp'),
+                'nip'      => $this->input->post('nip'),
+                'bidang'   => $this->input->post('bidang'),
+                'email'    => $this->input->post('email'),
+                'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT) // Hash the password for security
+            );
+    
+            // Insert the mediator data into the database
+            if ($this->Mediator_model->add_mediator($data)) {
+                // Redirect to the mediator list page after successful insertion
+                $this->session->set_flashdata('success', 'Mediator berhasil ditambahkan.');
+                redirect('mediator');
+            } else {
+                // Handle errors if insertion fails
+                $this->session->set_flashdata('error', 'Terjadi kesalahan, coba lagi.');
+                redirect('mediator/add');
+            }
         }
-    }
+    }    
 
     public function edit($id) {
-        $data['mediator'] = $this->Mediator_model->get_mediator_by_id($id); // Mengambil data mediator berdasarkan ID
+        $data['mediator'] = $this->Mediator_model->get_mediator_by_id($id);
 
         if ($this->input->post()) {
             $update_data = [

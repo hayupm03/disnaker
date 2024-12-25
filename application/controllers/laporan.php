@@ -16,11 +16,13 @@ class Laporan extends CI_Controller {
             $this->session->set_flashdata('error', 'Anda tidak memiliki akses ke halaman ini.');
             redirect('auth/login');
         }
-        
+
+        // Mengambil data laporan
         $data['laporans'] = $this->Laporan_model->get_laporans();
 
+        // Menampilkan view
         $this->load->view('backend/partials/header');
-        $this->load->view('backend/laporan/view', $data);
+        $this->load->view('backend/laporan/view', $data); // Pastikan view ini sudah ada
         $this->load->view('backend/partials/footer');
     }
 

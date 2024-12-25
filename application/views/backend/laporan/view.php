@@ -40,10 +40,10 @@
                             <?php foreach ($laporans as $laporan) : ?>
                                 <tr>
                                     <td><?= $no++; ?></td> <!-- Nomor Urut -->
-                                    <td><?= htmlspecialchars($laporan['id']); ?></td>
+                                    <td><?= htmlspecialchars($laporan['id_laporan']); ?></td>
                                     <td><?= htmlspecialchars($laporan['id_agenda']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['nama_pihak1']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['nama_pihak2']); ?></td>
+                                    <td><?= htmlspecialchars($laporan['nama_pihak_satu']); ?></td>
+                                    <td><?= htmlspecialchars($laporan['nama_pihak_dua']); ?></td>
                                     <td><?= htmlspecialchars($laporan['tgl_agenda']); ?></td>
                                     <td><?= htmlspecialchars($laporan['tgl_penutupan']); ?></td>
                                     <td><?= htmlspecialchars($laporan['status']); ?></td>
@@ -51,8 +51,8 @@
                                     <td><?= htmlspecialchars($laporan['jenis_kasus']); ?></td>
                                     <td><?= htmlspecialchars($laporan['hasil_mediasi']); ?></td>
                                     <td>
-                                        <a href="<?= base_url('laporan/edit/' . $laporan['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="<?= base_url('laporan/delete/' . $laporan['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
+                                        <a href="<?= base_url('laporan/edit/' . $laporan['id_laporan']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="<?= base_url('laporan/delete/' . $laporan['id_laporan']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

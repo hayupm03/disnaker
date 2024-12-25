@@ -62,10 +62,10 @@
             <!-- Nav Item - Charts -->
            <!-- Nav Item - Dashboard -->
            <li class="nav-item active">
-            <li class="nav-item <?= ($this->uri->segment(1) == 'admin') ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?= base_url('admin'); ?>">
+            <li class="nav-item <?= ($this->uri->segment(1) == 'user') ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?= base_url('user'); ?>">
                 <i class="fas fa-fw fa-user-cog"></i>
-                <span>Admin</span>
+                <span>User</span>
             </a>
             </li>
 
@@ -154,7 +154,7 @@
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
-                            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div class="modal-body">Apakah anda yakin ingin keluar?</div>
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                 <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>">Logout</a>

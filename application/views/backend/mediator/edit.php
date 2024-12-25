@@ -15,7 +15,14 @@
         </div>
         <div class="form-group">
             <label>Bidang</label>
-            <input type="text" name="bidang" class="form-control" value="<?= $mediator['bidang']; ?>" required>
+            <select class="form-control" name="bidang" required>
+                <option value="">Pilih Bidang</option>
+                <option value="Hukum" <?= ($mediator['bidang'] == 'Hukum') ? 'selected' : ''; ?>>Hukum</option>
+                <option value="Ekonomi" <?= ($mediator['bidang'] == 'Ekonomi') ? 'selected' : ''; ?>>Ekonomi</option>
+                <option value="Pendidikan" <?= ($mediator['bidang'] == 'Pendidikan') ? 'selected' : ''; ?>>Pendidikan</option>
+                <!-- Tambahkan opsi bidang lainnya sesuai kebutuhan -->
+            </select>
+            <?php echo form_error('bidang', '<small class="text-danger">', '</small>'); ?>
         </div>
         <div class="form-group">
             <label>Email</label>

@@ -3,9 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Laporan_model extends CI_Model {
 
-    // Mengambil semua laporan
+    // Mengambil semua laporan dengan informasi dari tabel agenda_mediasi
     public function get_laporans() {
-        $query = $this->db->get('pelaporan_mediasi');
+        $this->db->select('pelaporan_mediasi.*, agenda_mediasi.nama_pihak1, agenda_mediasi.nama_pihak2, agenda_mediasi.tempat');
+        $this->db->from('pelaporan_mediasi');
+        $this->db->join('agenda_mediasi', 'agenda_mediasi.id = pelaporan_mediasi.id_agenda', 'left');
+        $query = $this->db->get();
         return $query->result_array();
     }
 
