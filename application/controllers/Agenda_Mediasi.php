@@ -80,66 +80,50 @@ class Agenda_mediasi extends CI_Controller
 
     public function edit($id)
     {
-        // Ambil data agenda berdasarkan ID
-        $agenda = $this->agenda_model->get_agenda_by_id($id);
-        if (!$agenda) {
-            // Jika data tidak ditemukan, redirect ke daftar agenda
-            redirect('agenda');
+        // Ambil data agenda mediasi berdasarkan ID
+        $data['agenda'] = $this->agenda_model->get_agenda_by_id($id);
+
+        if (!$data['agenda']) {
+            // Jika data tidak ditemukan, redirect atau tampilkan error
+            show_404();
         }
 
-        // Kirim data ke view
-        $data['agenda'] = $agenda;
-        $this->load->view('backend/partials/header');
-        $this->load->view('backend/agenda/edit', $data);
-        $this->load->view('backend/partials/footer');
-    }
+        // Ambil data mediator untuk pilihan pada select box
+        $data['mediators'] = $this->Mediator_model->get_mediators();
 
-    public function update($id)
-    {
-        // Validasi form
-        $this->form_validation->set_rules('nama_pihak1', 'Nama Pihak 1', 'required');
-        $this->form_validation->set_rules('nama_pihak2', 'Nama Pihak 2', 'required');
+        // Set form validation rules
+        $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak 1', 'required');
+        $this->form_validation->set_rules('nama_pihak_dua', 'Nama Pihak 2', 'required');
         $this->form_validation->set_rules('nama_kasus', 'Nama Kasus', 'required');
-        $this->form_validation->set_rules('nama_mediator', 'Nama Mediator', 'required');
+        $this->form_validation->set_rules('id_mediator', 'Nama Mediator', 'required');
         $this->form_validation->set_rules('tgl_mediasi', 'Tanggal Mediasi', 'required');
         $this->form_validation->set_rules('waktu_mediasi', 'Waktu Mediasi', 'required');
-        $this->form_validation->set_rules('tempat', 'Tempat Mediasi', 'required');
-        $this->form_validation->set_rules('jenis_kasus', 'Jenis Kasus', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('tempat', 'Tempat', 'required');
+        $this->form_validation->set_rules('jenis_kasus', 'Jenis Kasus', 'required');
         $this->form_validation->set_rules('deskripsi_kasus', 'Deskripsi Kasus', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            // Jika validasi gagal, kembali ke form edit
-            $this->edit($id);
+            // Jika validasi gagal, tampilkan form dengan data yang sudah ada
+            $this->load->view('backend/partials/header');
+            $this->load->view('backend/agenda/edit', $data);
+            $this->load->view('backend/partials/footer');
         } else {
-            // Update data agenda
-            $agenda_data = array(
-                'nama_pihak1' => $this->input->post('nama_pihak1'),
-                'nama_pihak2' => $this->input->post('nama_pihak2'),
+            // Ambil data dari form
+            $agenda_data = [
+                'nama_pihak_satu' => $this->input->post('nama_pihak_satu'),
+                'nama_pihak_dua' => $this->input->post('nama_pihak_dua'),
                 'nama_kasus' => $this->input->post('nama_kasus'),
-                'nama_mediator' => $this->input->post('nama_mediator'),
+                'id_mediator' => $this->input->post('id_mediator'),
                 'tgl_mediasi' => $this->input->post('tgl_mediasi'),
                 'waktu_mediasi' => $this->input->post('waktu_mediasi'),
                 'status' => $this->input->post('status'),
                 'tempat' => $this->input->post('tempat'),
                 'jenis_kasus' => $this->input->post('jenis_kasus'),
-                'deskripsi_kasus' => $this->input->post('deskripsi_kasus'),
-            );
+                'deskripsi_kasus' => $this->input->post('deskripsi_kasus')
+            ];
 
-            // Mengunggah file PDF (optional)
-            if ($_FILES['file_pdf']['name']) {
-                $config['upload_path'] = './uploads/';
-                $config['allowed_types'] = 'pdf';
-                $config['max_size'] = 2048;
-                $this->upload->initialize($config);
-
-                if ($this->upload->do_upload('file_pdf')) {
-                    $file_data = $this->upload->data();
-                    $agenda_data['file_pdf'] = $file_data['file_name'];
-                }
-            }
-
-            // Update agenda di database
+            // Update agenda mediasi ke database
             $this->agenda_model->update_agenda($id, $agenda_data);
 
             // Redirect ke halaman daftar agenda setelah berhasil update

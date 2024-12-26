@@ -7,7 +7,7 @@ class Mediator_model extends CI_Model
     {
         $this->db->select('mediator.*, users.email');
         $this->db->from('mediator');
-        $this->db->join('users', 'mediator.id_users = users.id', 'left');
+        $this->db->join('users', 'mediator.id_user = users.id', 'left');
         return $this->db->get()->result_array();
     }
 
