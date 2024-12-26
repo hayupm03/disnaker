@@ -22,6 +22,7 @@
                             <th>Role</th>
                             <th>Telepon</th>
                             <th>Email</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,27 +34,28 @@
                                     <td><?= htmlspecialchars($user['admin_name'] ?? $user['pelapor_name'] ?? $user['mediator_name']); ?></td>
                                     <td>
                                         <?php
-                                            // Menentukan role berdasarkan data yang ada
-                                            if (!empty($user['admin_name'])) {
-                                                echo 'Admin';
-                                            } elseif (!empty($user['pelapor_name'])) {
-                                                echo 'Pelapor';
-                                            } elseif (!empty($user['mediator_name'])) {
-                                                echo 'Mediator';
-                                            } else {
-                                                echo 'Unknown';
-                                            }
+                                        if (!empty($user['admin_name'])) {
+                                            echo 'Admin';
+                                        } elseif (!empty($user['pelapor_name'])) {
+                                            echo 'Pelapor';
+                                        } elseif (!empty($user['mediator_name'])) {
+                                            echo 'Mediator';
+                                        } else {
+                                            echo 'Unknown';
+                                        }
                                         ?>
                                     </td>
-                                    <td>
-                                        <?= htmlspecialchars($user['admin_telp'] ?? $user['pelapor_telp'] ?? $user['mediator_telp']); ?>
-                                    </td>
+                                    <td><?= htmlspecialchars($user['admin_telp'] ?? $user['pelapor_telp'] ?? $user['mediator_telp']); ?></td>
                                     <td><?= htmlspecialchars($user['email']); ?></td>
+                                    <td>
+                                        <a href="<?= base_url('user/edit/' . $user['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="<?= base_url('user/delete/' . $user['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
                             <tr>
-                                <td colspan="5" class="text-center">Tidak ada data user.</td>
+                                <td colspan="6" class="text-center">Tidak ada data user.</td>
                             </tr>
                         <?php endif; ?>
                     </tbody>

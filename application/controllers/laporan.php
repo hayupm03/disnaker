@@ -1,18 +1,23 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Laporan extends CI_Controller {
+class Laporan extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Laporan_model');
         $this->load->library('form_validation');
     }
 
     // Menampilkan daftar laporan
-    public function index() {
-        if (!$this->session->userdata('logged_in') || 
-            !in_array($this->session->userdata('user_type'), ['admin', 'mediator'])) {
+    public function index()
+    {
+        if (
+            !$this->session->userdata('logged_in') ||
+            !in_array($this->session->userdata('user_type'), ['admin', 'mediator'])
+        ) {
             $this->session->set_flashdata('error', 'Anda tidak memiliki akses ke halaman ini.');
             redirect('auth/login');
         }
@@ -27,7 +32,8 @@ class Laporan extends CI_Controller {
     }
 
     // Tambah laporan
-    public function add() {
+    public function add()
+    {
         $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak 1', 'required');
         $this->form_validation->set_rules('nama_pihak_dua', 'Nama Pihak 2', 'required');
         $this->form_validation->set_rules('tgl_agenda', 'Tanggal Agenda', 'required');
@@ -48,7 +54,8 @@ class Laporan extends CI_Controller {
     }
 
     // Edit laporan
-    public function edit($id) {
+    public function edit($id)
+    {
         $data['laporan'] = $this->Laporan_model->get_laporan_by_id($id);
 
         $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak 1', 'required');
@@ -71,7 +78,8 @@ class Laporan extends CI_Controller {
     }
 
     // Hapus laporan
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->Laporan_model->delete_laporan($id);
         redirect('laporan');
     }
