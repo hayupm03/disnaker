@@ -1,16 +1,15 @@
-
 <section class="single-page-header">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Agenda Mediasi</h2>
-				<ol class="breadcrumb header-bradcrumb justify-content-center">
-					<li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-					<li class="breadcrumb-item active" aria-current="page">About Us</li>
-				</ol>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Agenda Mediasi</h2>
+                <ol class="breadcrumb header-bradcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section class="about-shot-info section-sm">
@@ -82,7 +81,7 @@
         </div>
     </div>
 </section>
-	
+
 
 
 <!--
@@ -113,7 +112,7 @@ Start Blog Section
                                 <p class="mb-2"><strong>Pihak 1:</strong> <?= htmlspecialchars($agenda['nama_pihak1']); ?></p>
                                 <p class="mb-2"><strong>Pihak 2:</strong> <?= htmlspecialchars($agenda['nama_pihak2']); ?></p>
                                 <p class="mb-2"><strong>Tanggal:</strong> <?= htmlspecialchars(date("d-m-Y", strtotime($agenda['tgl_mediasi']))); ?></p>
-                                <p class="mb-3"><strong>Status:</strong> 
+                                <p class="mb-3"><strong>Status:</strong>
                                     <span class="badge <?= $agenda['status'] === 'disetujui' ? 'badge-success' : ($agenda['status'] === 'ditolak' ? 'badge-danger' : 'badge-warning'); ?>">
                                         <?= ucfirst(htmlspecialchars($agenda['status'])); ?>
                                     </span>

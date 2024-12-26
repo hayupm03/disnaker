@@ -1,4 +1,3 @@
-
 <section class="single-page-header">
 	<div class="container">
 		<div class="row">
@@ -180,7 +179,7 @@ Start Counter Section
 	</div> <!-- end container -->
 </section> <!-- end section -->
 
-				</div> 		<!-- end col lg 12 -->
-			</div>	    <!-- End row -->
-		</div>       <!-- End container -->
-	</section>    <!-- End Section -->
+</div> <!-- end col lg 12 -->
+</div> <!-- End row -->
+</div> <!-- End container -->
+</section> <!-- End Section -->

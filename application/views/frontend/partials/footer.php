@@ -1,4 +1,3 @@
-
 <footer id="footer" class="bg-one">
   <div class="top-footer">
     <div class="container">

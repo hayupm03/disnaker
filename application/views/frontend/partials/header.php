@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
 
   <!-- Basic Page Needs
@@ -35,6 +36,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/') ?>css/style.css">
 
 </head>
+
 <body id="body">
 
   <!--
@@ -57,60 +59,60 @@
   <!--
 Fixed Navigation
 ==================================== -->
-<header class="navigation fixed-top">
-  <div class="container">
-    <!-- main nav -->
-    <nav class="navbar navbar-expand-lg navbar-light px-0">
-      <!-- logo -->
-      <a class="navbar-brand logo" href="index.html">
-        <img loading="lazy" class="logo-default" src="<?= base_url('assets/') ?>images/logoo.png" alt="logo" style="width: 40px; height: auto;"/>
-        <img loading="lazy" class="logo-white" src="<?= base_url('assets/') ?>images/disnaker.png" alt="logo" style="width: 120px; height: auto;"/>
-      </a>
-      <!-- /logo -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <header class="navigation fixed-top">
+    <div class="container">
+      <!-- main nav -->
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <!-- logo -->
+        <a class="navbar-brand logo" href="index.html">
+          <img loading="lazy" class="logo-default" src="<?= base_url('assets/') ?>images/logoo.png" alt="logo" style="width: 40px; height: auto;" />
+          <img loading="lazy" class="logo-white" src="<?= base_url('assets/') ?>images/disnaker.png" alt="logo" style="width: 120px; height: auto;" />
+        </a>
+        <!-- /logo -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navigation">
+        <div class="collapse navbar-collapse" id="navigation">
           <ul class="navbar-nav ml-auto text-center">
-              <li class="nav-item dropdown <?php echo ($this->uri->segment(1) == '') ? 'active' : ''; ?>">
-                  <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>">
-                      Home
-                  </a>
-              </li>
+            <li class="nav-item dropdown <?php echo ($this->uri->segment(1) == '') ? 'active' : ''; ?>">
+              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>">
+                Home
+              </a>
+            </li>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
               <ul class="navbar-nav ml-auto d-flex align-items-center">
-              <ul class="navbar-nav ml-auto d-flex align-items-center">
-              <ul class="navbar-nav ml-auto d-flex align-items-center">
-              <!-- Nav Item - Agenda -->
-              <li class="nav-item <?php echo ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
-                  <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
-              </li>
-              
-              <!-- Nav Item - Arsip -->
-              <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
-                  <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
-              </li>
-              
-              <!-- Nav Item - Kontak -->
-              <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
-                  <a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak</a>
-              </li>
-              
-              <!-- Nav Item - Tiga Titik (Dropdown) -->
-              <li class="nav-item">
-    <!-- Button Login -->
-    <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('auth/login'); ?>'">
-        Login
-    </button>
-</li>
-          </ul>
-          </ul>
-      </div>
-    </nav>
-    <!-- /main nav -->
-  </div>
-</header>
-<!--
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
+                  <!-- Nav Item - Agenda -->
+                  <li class="nav-item <?php echo ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
+                  </li>
+
+                  <!-- Nav Item - Arsip -->
+                  <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
+                  </li>
+
+                  <!-- Nav Item - Kontak -->
+                  <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak</a>
+                  </li>
+
+                  <!-- Nav Item - Tiga Titik (Dropdown) -->
+                  <li class="nav-item">
+                    <!-- Button Login -->
+                    <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('auth/login'); ?>'">
+                      Login
+                    </button>
+                  </li>
+                </ul>
+              </ul>
+        </div>
+      </nav>
+      <!-- /main nav -->
+    </div>
+  </header>
+  <!--
 End Fixed Navigation
 ==================================== -->
