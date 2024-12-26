@@ -21,8 +21,6 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
-                            <th>ID Laporan</th>
-                            <th>ID Agenda</th>
                             <th>Nama Pihak 1</th>
                             <th>Nama Pihak 2</th>
                             <th>Tanggal Agenda</th>
@@ -39,12 +37,10 @@
                             <?php $no = 1; // Inisialisasi nomor urut ?>
                             <?php foreach ($laporans as $laporan) : ?>
                                 <tr>
-                                    <td><?= $no++; ?></td> <!-- Nomor Urut -->
-                                    <td><?= htmlspecialchars($laporan['id_laporan']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['id_agenda']); ?></td>
+                                    <td><?= $no++; ?></td> 
                                     <td><?= htmlspecialchars($laporan['nama_pihak_satu']); ?></td>
                                     <td><?= htmlspecialchars($laporan['nama_pihak_dua']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['tgl_agenda']); ?></td>
+                                    <td><?= htmlspecialchars($laporan['tgl_mediasi']); ?></td>
                                     <td><?= htmlspecialchars($laporan['tgl_penutupan']); ?></td>
                                     <td><?= htmlspecialchars($laporan['status']); ?></td>
                                     <td><?= htmlspecialchars($laporan['tempat']); ?></td>

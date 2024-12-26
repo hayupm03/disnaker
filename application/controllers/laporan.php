@@ -8,6 +8,7 @@ class Laporan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Laporan_model');
+        $this->load->model('Agenda_model');
         $this->load->library('form_validation');
     }
 
@@ -64,7 +65,7 @@ class Laporan extends CI_Controller
         } else {
             // Ambil data dari form
             $laporan_data = [
-                'agenda_mediasi_id' => $this->input->post('agenda_mediasi_id'),
+                'id_agenda' => $this->input->post('agenda_mediasi_id'),
                 'tgl_penutupan' => $this->input->post('tgl_penutupan'),
                 'status' => $this->input->post('status'),
                 'hasil_mediasi' => $this->input->post('hasil_mediasi')
@@ -78,28 +79,49 @@ class Laporan extends CI_Controller
         }
     }
 
-    // Edit laporan
     public function edit($id)
     {
-        $data['laporan'] = $this->Laporan_model->get_laporan_by_id($id);
+        // Pastikan model yang dibutuhkan sudah dimuat
+        $this->load->model('Laporan_model');
+        $this->load->model('Agenda_model');
 
-        $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak 1', 'required');
-        $this->form_validation->set_rules('nama_pihak_dua', 'Nama Pihak 2', 'required');
-        $this->form_validation->set_rules('tgl_agenda', 'Tanggal Agenda', 'required');
-        $this->form_validation->set_rules('tgl_penutupan', 'Tanggal Penutupan', 'required');
-        $this->form_validation->set_rules('jenis_kasus', 'Jenis Kasus', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('hasil_mediasi', 'Hasil Mediasi', 'required');
+        // Ambil data laporan mediasi berdasarkan ID
+        $data['laporan'] = $this->Laporan_model->getLaporanById($id);
 
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('backend/partials/header');
-            $this->load->view('backend/laporan/edit', $data);
-            $this->load->view('backend/partials/footer');
-        } else {
-            $update_data = $this->input->post();
-            $this->Laporan_model->update_laporan($id, $update_data);
-            redirect('laporan');
+        // Jika data laporan tidak ditemukan, tampilkan halaman 404
+        if (empty($data['laporan'])) {
+            show_404();
         }
+
+        // Ambil data agenda mediasi yang statusnya disetujui untuk dropdown
+        $data['agenda_mediasi'] = $this->Agenda_model->get_agendas();
+
+        // Jika form disubmit
+        if ($this->input->post()) {
+            // Validasi form
+            $this->_validate_form();
+
+            // Jika form valid, lakukan update
+            if ($this->form_validation->run()) {
+                $laporan_data = [
+                    'id_agenda' => $this->input->post('agenda_mediasi_id'),
+                    'tgl_penutupan' => $this->input->post('tgl_penutupan'),
+                    'status' => $this->input->post('status'),
+                    'hasil_mediasi' => $this->input->post('hasil_mediasi')
+                ];
+
+                // Update laporan di database
+                $this->Laporan_model->update_laporan($id, $laporan_data);
+
+                // Redirect ke halaman laporan setelah berhasil update
+                redirect('laporan');
+            }
+        }
+
+        // Tampilkan form edit dengan data yang sudah ada
+        $this->load->view('backend/partials/header');
+        $this->load->view('backend/laporan/edit', $data);
+        $this->load->view('backend/partials/footer');
     }
 
     // Hapus laporan
