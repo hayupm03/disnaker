@@ -3,8 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mediator_model extends CI_Model
 {
-
-    // Fungsi untuk mengambil data mediator dari database
     public function get_mediators()
     {
         $this->db->select('mediator.*, users.email');

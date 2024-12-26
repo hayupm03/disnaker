@@ -12,14 +12,14 @@
         <div class="card-body">
             <form action="<?php echo base_url('agenda_mediasi/add'); ?>" method="post">
                 <div class="form-group">
-                    <label for="nama_pihak1">Nama Pihak 1</label>
-                    <input type="text" class="form-control" id="nama_pihak1" name="nama_pihak1" value="<?php echo set_value('nama_pihak1'); ?>">
-                    <?php echo form_error('nama_pihak1', '<small class="text-danger">', '</small>'); ?>
+                    <label for="nama_pihak_satu">Nama Pihak 1</label>
+                    <input type="text" class="form-control" id="nama_pihak_satu" name="nama_pihak_satu" value="<?php echo set_value('nama_pihak_satu'); ?>">
+                    <?php echo form_error('nama_pihak_satu', '<small class="text-danger">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label for="nama_pihak2">Nama Pihak 2</label>
-                    <input type="text" class="form-control" id="nama_pihak2" name="nama_pihak2" value="<?php echo set_value('nama_pihak2'); ?>">
-                    <?php echo form_error('nama_pihak2', '<small class="text-danger">', '</small>'); ?>
+                    <label for="nama_pihak_dua">Nama Pihak 2</label>
+                    <input type="text" class="form-control" id="nama_pihak_dua" name="nama_pihak_dua" value="<?php echo set_value('nama_pihak_dua'); ?>">
+                    <?php echo form_error('nama_pihak_dua', '<small class="text-danger">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="nama_kasus">Nama Kasus</label>
@@ -27,9 +27,16 @@
                     <?php echo form_error('nama_kasus', '<small class="text-danger">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label for="nama_mediator">Nama Mediator</label>
-                    <input type="text" class="form-control" id="nama_mediator" name="nama_mediator" value="<?php echo set_value('nama_mediator'); ?>">
-                    <?php echo form_error('nama_mediator', '<small class="text-danger">', '</small>'); ?>
+                    <label for="id_mediator">Nama Mediator</label>
+                    <select class="form-control" id="id_mediator" name="id_mediator">
+                        <option value="">-- Pilih Mediator --</option>
+                        <?php foreach ($mediators as $mediator): ?>
+                            <option value="<?= $mediator['id_mediator']; ?>" <?= set_select('id_mediator', $mediator['id_mediator']); ?>>
+                                <?= htmlspecialchars($mediator['nama']); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?php echo form_error('id_mediator', '<small class="text-danger">', '</small>'); ?>
                 </div>
                 <div class="form-group">
                     <label for="tgl_mediasi">Tanggal Mediasi</label>
@@ -38,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <label for="waktu_mediasi">Waktu Mediasi</label>
-                    <input type="text" class="form-control" id="waktu_mediasi" name="waktu_mediasi" value="<?php echo set_value('waktu_mediasi'); ?>">
+                    <input type="time" class="form-control" id="waktu_mediasi" name="waktu_mediasi" value="<?php echo set_value('waktu_mediasi'); ?>">
                     <?php echo form_error('waktu_mediasi', '<small class="text-danger">', '</small>'); ?>
                 </div>
                 <div class="form-group">
