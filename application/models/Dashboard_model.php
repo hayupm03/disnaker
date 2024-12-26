@@ -30,14 +30,15 @@ class Dashboard_model extends CI_Model
     // Menghitung total laporan
     public function get_total_laporan()
     {
-        return $this->db->count_all('pelaporan_mediasi');
+        return $this->db->count_all('laporan_mediasi');
     }
 
     // Menghitung total berdasarkan status di tabel agenda_mediasi
     public function get_agenda_status_totals()
     {
-        $this->db->select('status, COUNT(*) as total');
-        $this->db->group_by('status');
+        $this->db->select('MONTH(tgl_mediasi) as month, COUNT(*) as total');
+        $this->db->group_by('month');
+        $this->db->order_by('month', 'ASC');  // Untuk mengurutkan bulan dari Januari sampai Desember
         return $this->db->get('agenda_mediasi')->result_array();
     }
 
@@ -46,6 +47,6 @@ class Dashboard_model extends CI_Model
     {
         $this->db->select('status, COUNT(*) as total');
         $this->db->group_by('status');
-        return $this->db->get('pelaporan_mediasi')->result_array();
+        return $this->db->get('laporan_mediasi')->result_array();
     }
 }

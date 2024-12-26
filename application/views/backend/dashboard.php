@@ -89,28 +89,13 @@
                 <div class="card shadow mb-4">
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Agenda Mediasi</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Total Agenda Mediasi per bulan</h6>
                     </div>
                     <div class="card-body">
                         <div class="card-body">
-                            <h5 class="card-title">Status Agenda Mediasi</h5>
+                            <h5 class="card-title">Total Agenda Mediasi</h5>
                             <div id="agendaChart"></div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xl-12 col-lg-12">
-                <div class="card shadow mb-4">
-                    <div
-                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Agenda Mediasi</h6>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Status Pelaporan Mediasi</h5>
-                        <div id="pelaporanChart"></div>
                     </div>
                 </div>
             </div>
@@ -119,33 +104,36 @@
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-        // Data untuk agenda mediasi
         var agendaOptions = {
             chart: {
-                type: 'pie'
+                type: 'bar',
+                width: '100%',
+                height: '400px'
             },
-            series: <?= json_encode($agenda_totals) ?>,
-            labels: <?= json_encode($agenda_status) ?>,
-            title: {
-                text: 'Status Agenda Mediasi'
+            series: [{
+                name: 'Agenda Mediasi',
+                data: <?= json_encode($agenda_totals) ?>
+            }],
+            xaxis: {
+                categories: <?= json_encode($agenda_status) ?>
+            },
+            legend: {
+                show: true,
+                position: 'top',
+                horizontalAlign: 'center',
+                floating: false,
+                fontSize: '14px',
+                fontFamily: 'Arial',
+                fontWeight: 400,
+                offsetY: 0,
+                itemMargin: {
+                    horizontal: 5,
+                    vertical: 5
+                }
             }
         };
 
+        // Membuat chart untuk agenda mediasi
         var agendaChart = new ApexCharts(document.querySelector("#agendaChart"), agendaOptions);
         agendaChart.render();
-
-        // Data untuk pelaporan mediasi
-        var pelaporanOptions = {
-            chart: {
-                type: 'pie'
-            },
-            series: <?= json_encode($pelaporan_totals) ?>,
-            labels: <?= json_encode($pelaporan_status) ?>,
-            title: {
-                text: 'Status Pelaporan Mediasi'
-            }
-        };
-
-        var pelaporanChart = new ApexCharts(document.querySelector("#pelaporanChart"), pelaporanOptions);
-        pelaporanChart.render();
     </script>

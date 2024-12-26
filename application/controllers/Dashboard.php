@@ -22,11 +22,21 @@ class Dashboard extends CI_Controller
             redirect('auth/login');
         }
 
-        // Data untuk chart
+        // Ambil data agenda mediasi per bulan
         $agenda_status_totals = $this->Dashboard_model->get_agenda_status_totals();
         $pelaporan_status_totals = $this->Dashboard_model->get_pelaporan_status_totals();
-        $data['agenda_status'] = array_column($agenda_status_totals, 'status');
-        $data['agenda_totals'] = array_column($agenda_status_totals, 'total');
+
+        // Siapkan data untuk chart agenda
+        $data['agenda_status'] = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $monthly_totals = array_fill(0, 12, 0);  // Inisialisasi dengan 0 untuk 12 bulan
+
+        foreach ($agenda_status_totals as $total) {
+            $monthly_totals[$total['month'] - 1] = $total['total'];
+        }
+
+        $data['agenda_totals'] = $monthly_totals;
+
+        // Siapkan data untuk chart pelaporan
         $data['pelaporan_status'] = array_column($pelaporan_status_totals, 'status');
         $data['pelaporan_totals'] = array_column($pelaporan_status_totals, 'total');
 

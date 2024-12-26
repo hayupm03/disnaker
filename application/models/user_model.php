@@ -107,9 +107,11 @@ class User_model extends CI_Model
 
     public function get_user_by_id($id)
     {
-        $this->db->select('users.id, users.email, users.password, admin.nama as admin_name, 
-                            mediator.nama as mediator_name, pelapor.nama as pelapor_name,
-                            admin.telp as admin_telp, mediator.telp as mediator_telp, pelapor.telp as pelapor_telp');
+        $this->db->select('users.id, users.email, users.password, 
+                       admin.nama as admin_name, admin.telp as admin_telp, admin.alamat as admin_alamat,
+                       mediator.nama as mediator_name, mediator.telp as mediator_telp, mediator.alamat as mediator_alamat,
+                       mediator.bidang as mediator_bidang, mediator.nip as mediator_nip,
+                       pelapor.nama as pelapor_name, pelapor.telp as pelapor_telp, pelapor.alamat as pelapor_alamat, pelapor.perusahaan as pelapor_perusahaan');
         $this->db->from('users');
         $this->db->join('admin', 'admin.id_user = users.id', 'left');
         $this->db->join('mediator', 'mediator.id_user = users.id', 'left');
@@ -118,29 +120,28 @@ class User_model extends CI_Model
         return $this->db->get()->row_array();
     }
 
-    // Update user data (email and password)
     public function update_user($id, $data)
     {
         $this->db->where('id', $id);
-        return $this->db->update('users', $data);
-    }
-
-    public function update_mediator($id, $data)
-    {
-        $this->db->where('id_user', $id);
-        $update = $this->db->update('mediator', $data);
-    }
-
-    public function update_pelapor($id, $data)
-    {
-        $this->db->where('id_user', $id);
-        $this->db->update('pelapor', $data);
+        $this->db->update('users', $data);
     }
 
     public function update_admin($id, $data)
     {
         $this->db->where('id_user', $id);
         $this->db->update('admin', $data);
+    }
+
+    public function update_mediator($id, $data)
+    {
+        $this->db->where('id_user', $id);
+        $this->db->update('mediator', $data);
+    }
+
+    public function update_pelapor($id, $data)
+    {
+        $this->db->where('id_user', $id);
+        $this->db->update('pelapor', $data);
     }
 
     public function delete_related_data($id)
