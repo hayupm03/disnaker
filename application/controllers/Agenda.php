@@ -1,9 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Agenda extends CI_Controller {
+class Agenda extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('agenda_model'); // Memuat model
         $this->load->helper('form');
@@ -11,7 +13,8 @@ class Agenda extends CI_Controller {
         $this->load->library('upload');
     }
 
-    public function index() {
+    public function index()
+    {
         // Mengambil data admin dari model
         $data['agendas'] = $this->agenda_model->get_agendas();
 
@@ -20,7 +23,8 @@ class Agenda extends CI_Controller {
         $this->load->view('frontend/partials/footer');
     }
 
-    public function save() {
+    public function save()
+    {
         // Validasi form
         $this->form_validation->set_rules('nama_pihak1', 'Nama Pihak 1', 'required');
         $this->form_validation->set_rules('nama_pihak2', 'Nama Pihak 2', 'required');
@@ -80,21 +84,22 @@ class Agenda extends CI_Controller {
             // Redirect atau tampilkan pesan sukses
             redirect('agenda');
         }
-    } 
+    }
 
-    public function detail($id = null) {
+    public function detail($id = null)
+    {
         if (!$id) {
             redirect('agenda');
         }
-    
+
         // Ambil data berdasarkan ID
         $data['agenda'] = $this->agenda_model->get_agenda_by_id($id);
-    
+
         // Jika data tidak ditemukan
         if (empty($data['agenda'])) {
             show_404();
         }
-    
+
         $this->load->view('frontend/partials/header');
         $this->load->view('frontend/pages/agenda_detail', $data);
         $this->load->view('frontend/partials/footer');

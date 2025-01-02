@@ -1,15 +1,17 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profile extends CI_Controller {
+class Profile extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('user_model');  // Load the model to retrieve user data
         $this->load->library('session');
         $this->load->helper('form');
         $this->load->library('form_validation');
-        
+
         // Ensure the user is logged in
         if (!$this->session->userdata('logged_in')) {
             redirect('auth/login');
@@ -17,18 +19,19 @@ class Profile extends CI_Controller {
     }
 
     // Display the profile page
-    public function index() {
+    public function index()
+    {
         // Get the user ID from the session
         $userId = $this->session->userdata('user_id');
-        
+
         // Retrieve user data based on user_id
         $userData = $this->user_model->getUserProfile($userId);
         $data['user'] = $userData; // Send profile data to the view
-        
+
         // Retrieve additional user data if necessary
         $userById = $this->user_model->getUserById($userId);
         $data['user_details'] = $userById; // Additional details for the profile
-        
+
         // Load the profile page
         $this->load->view('backend/partials/header', $data);
         $this->load->view('backend/profile/profile', $data);
@@ -36,14 +39,15 @@ class Profile extends CI_Controller {
     }
 
     // Function to update the user profile
-    public function update() {
+    public function update()
+    {
         $userId = $this->session->userdata('user_id');
-        
+
         // Form validation
         $this->form_validation->set_rules('name', 'Nama', 'required');
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('phone', 'Nomor Telepon', 'required');
-        
+
         if ($this->form_validation->run() == FALSE) {
             // If validation fails, reload the profile page
             $this->index();

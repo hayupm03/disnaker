@@ -47,6 +47,7 @@
                     </thead>
                     <tbody>
                         <?php if (!empty($mediators)): ?>
+<<<<<<< HEAD
                             <?php $no = 1; ?>
                             <?php foreach ($mediators as $media): ?>
                                 <tr>
@@ -65,6 +66,21 @@
                                                 🗑️
                                             </a>
                                         </div>
+=======
+                            <?php $no = 1; // Inisialisasi nomor urut 
+                            ?>
+                            <?php foreach ($mediators as $media): ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $media['nama']; ?></td>
+                                    <td><?= $media['telp']; ?></td>
+                                    <td><?= $media['nip']; ?></td>
+                                    <td><?= $media['bidang']; ?></td>
+                                    <td><?= $media['email']; ?></td>
+                                    <td>
+                                        <a href="<?= base_url('mediator/edit/' . $media['id_mediator']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="<?= base_url('mediator/delete/' . $media['id_mediator']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
+>>>>>>> 97b43e7a9c77bc6159ccb2717c5bb5820149637a
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -75,6 +91,10 @@
                         <?php endif; ?>
                     </tbody>
                 </table>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 97b43e7a9c77bc6159ccb2717c5bb5820149637a
             </div>
         </div>
     </div>

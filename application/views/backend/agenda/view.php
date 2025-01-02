@@ -2,7 +2,30 @@
     .table th {
         white-space: nowrap;
     }
+
+    .table td {
+        vertical-align: middle;
+    }
+
+    .status-approved {
+        background-color: #28a745;
+        /* green */
+        color: white;
+    }
+
+    .status-rejected {
+        background-color: #dc3545;
+        /* red */
+        color: white;
+    }
+
+    .status-processing {
+        background-color: #ffc107;
+        /* yellow */
+        color: white;
+    }
 </style>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -21,38 +44,53 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>No</th>
-                            <th>ID Laporan</th>
-                            <th>ID Agenda</th>
+                            <th>Nomor Mediasi</th>
                             <th>Nama Pihak 1</th>
                             <th>Nama Pihak 2</th>
+                            <th>Nama Mediator</th>
                             <th>Tanggal Agenda</th>
-                            <th>Tanggal Penutupan</th>
                             <th>Status</th>
                             <th>Tempat</th>
                             <th>Jenis Kasus</th>
-                            <th>Hasil Mediasi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if (!empty($laporans)) : ?>
-                            <?php $no = 1; // Inisialisasi nomor urut ?>
-                            <?php foreach ($laporans as $laporan) : ?>
+                        <?php if (!empty($agendas)) : ?>
+                            <?php $no = 1;
+                            ?>
+                            <?php foreach ($agendas as $agenda) : ?>
                                 <tr>
-                                    <td><?= $no++; ?></td> <!-- Nomor Urut -->
-                                    <td><?= htmlspecialchars($laporan['id_laporan']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['id_agenda']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['nama_pihak_satu']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['nama_pihak_dua']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['tgl_agenda']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['tgl_penutupan']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['status']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['tempat']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['jenis_kasus']); ?></td>
-                                    <td><?= htmlspecialchars($laporan['hasil_mediasi']); ?></td>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= htmlspecialchars($agenda['nomor_mediasi']); ?></td>
+                                    <td><?= htmlspecialchars($agenda['nama_pihak_satu']); ?></td>
+                                    <td><?= htmlspecialchars($agenda['nama_pihak_dua']); ?></td>
+                                    <td><?= htmlspecialchars($agenda['nama_mediator']); ?></td>
+                                    <td><?= date('d-m-Y', strtotime($agenda['tgl_mediasi'])); ?></td>
                                     <td>
-                                        <a href="<?= base_url('laporan/edit/' . $laporan['id_laporan']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="<?= base_url('laporan/delete/' . $laporan['id_laporan']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
+                                        <span class="badge <?php
+                                                            switch ($agenda['status']) {
+                                                                case 'disetujui':
+                                                                    echo 'status-approved';
+                                                                    break;
+                                                                case 'ditolak':
+                                                                    echo 'status-rejected';
+                                                                    break;
+                                                                case 'diproses':
+                                                                    echo 'status-processing';
+                                                                    break;
+                                                                default:
+                                                                    echo 'badge-secondary';
+                                                            }
+                                                            ?>">
+                                            <?= htmlspecialchars($agenda['status']); ?>
+                                        </span>
+                                    </td>
+                                    <td><?= htmlspecialchars($agenda['tempat']); ?></td>
+                                    <td><?= htmlspecialchars($agenda['jenis_kasus']); ?></td>
+                                    <td>
+                                        <a href="<?= base_url('agenda_mediasi/edit/' . $agenda['id']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="<?= base_url('agenda_mediasi/delete/' . $agenda['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

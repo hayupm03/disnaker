@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/sbadmin/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,31 +21,24 @@
     <!-- Custom Background Style for Soft Blue -->
     <style>
         body {
-            background-color: #a3d8f4; /* Soft Blue Color */
+            background-color: #a3d8f4;
         }
     </style>
 
 </head>
 
 <body>
-
     <div class="container">
-
-        <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-10 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <!-- Image Section -->
                             <div class="col-lg-6 d-flex align-items-center justify-content-center">
                                 <img src="<?= base_url('assets/images/company/login.png') ?>" alt="Login Image" class="img-fluid">
                             </div>
 
-                            <!-- Login Form Section -->
+                            <!-- Form Login -->
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -74,24 +67,19 @@
                                         </button>
                                     </form>
                                     <hr>
-                                    <!-- Forgot Password Link -->
-                                    <div class="text-center">
-                                        <a class="small" href="<?= site_url('auth/forgot_password'); ?>">Forgot Password?</a>
-                                    </div>
-                                    <!-- Register Link -->
                                     <div class="text-center">
                                         <a class="small" href="<?= site_url('auth/register'); ?>">Create an Account!</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="<?= base_url('home'); ?>">Kembali ke beranda</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->
