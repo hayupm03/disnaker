@@ -67,6 +67,16 @@
                     <input type="text" class="form-control" id="deskripsi_kasus" name="deskripsi_kasus" value="<?php echo set_value('deskripsi_kasus', $agenda['deskripsi_kasus']); ?>">
                     <?php echo form_error('deskripsi_kasus', '<small class="text-danger">', '</small>'); ?>
                 </div>
+                <div class="form-group">
+                    <label for="file_pdf">Upload File</label>
+                    <input type="file" class="form-control" id="file_pdf" name="file_pdf">
+                    <?php if (isset($upload_error)) : ?>
+                        <small class="text-danger"><?php echo $upload_error; ?></small>
+                    <?php endif; ?>
+                    <?php if (!empty($agenda['file_pdf'])) : ?>
+                        <small class="text-muted">File saat ini: <a href="<?php echo base_url('uploads/agenda_files/' . $agenda['file_pdf']); ?>" target="_blank"><?php echo $agenda['file_pdf']; ?></a></small>
+                    <?php endif; ?>
+                </div>
                 <button type="submit" class="btn btn-primary">Update Agenda</button>
             </form>
         </div>

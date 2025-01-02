@@ -29,7 +29,7 @@
                 <div class="form-group">
                     <label for="id_mediator">Nama Mediator</label>
                     <select class="form-control" id="id_mediator" name="id_mediator">
-                        <option value="">-- Pilih Mediator --</option>
+                        <option value="">- Pilih Mediator -</option>
                         <?php foreach ($mediators as $mediator): ?>
                             <option value="<?= $mediator['id_mediator']; ?>" <?= set_select('id_mediator', $mediator['id_mediator']); ?>>
                                 <?= htmlspecialchars($mediator['nama']); ?>
@@ -51,6 +51,7 @@
                 <div class="form-group">
                     <label for="status">Status</label>
                     <select class="form-control" id="status" name="status">
+                        <option value="">- Pilih Status -</option>
                         <option value="disetujui" <?php echo set_select('status', 'disetujui'); ?>>Disetujui</option>
                         <option value="ditolak" <?php echo set_select('status', 'ditolak'); ?>>Ditolak</option>
                         <option value="diproses" <?php echo set_select('status', 'diproses'); ?>>Diproses</option>
@@ -66,6 +67,13 @@
                     <label for="jenis_kasus">Jenis Kasus</label>
                     <input type="text" class="form-control" id="jenis_kasus" name="jenis_kasus" value="<?php echo set_value('jenis_kasus'); ?>">
                     <?php echo form_error('jenis_kasus', '<small class="text-danger">', '</small>'); ?>
+                </div>
+                <div class="form-group">
+                    <label for="file_pdf">Upload file</label>
+                    <input type="file" name="file_pdf" class="form-control">
+                    <?php if (isset($upload_error)) : ?>
+                        <small class="text-danger"><?php echo $upload_error; ?></small>
+                    <?php endif; ?>
                 </div>
                 <div class="form-group">
                     <label for="deskripsi_kasus">Deskripsi Kasus</label>
