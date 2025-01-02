@@ -75,49 +75,49 @@ Fixed Navigation
         </button>
 
         <div class="collapse navbar-collapse" id="navigation">
-            <ul class="navbar-nav ml-auto text-center">
-                <li class="nav-item dropdown <?php echo ($this->uri->segment(1) == '') ? 'active' : ''; ?>">
-                    <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>">
-                        Home
-                    </a>
-                </li>
-                <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <!-- Nav Item - Agenda -->
-                    <li class="nav-item <?php echo ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
-                    </li>
+          <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item dropdown <?php echo ($this->uri->segment(1) == '') ? 'active' : ''; ?>">
+              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>">
+                Home
+              </a>
+            </li>
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+              <!-- Nav Item - Agenda -->
+              <li class="nav-item <?php echo ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
+                <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
+              </li>
 
-                    <!-- Nav Item - Arsip -->
-                    <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
-                    </li>
+              <!-- Nav Item - Arsip -->
+              <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
+                <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
+              </li>
 
-                    <!-- Nav Item - Kontak -->
-                    <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
-                        <a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak</a>
-                    </li>
+              <!-- Nav Item - Kontak -->
+              <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
+                <a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak</a>
+              </li>
 
-                    <!-- Nav Item - Login/Profile -->
-                    <li class="nav-item">
-                        <?php if ($this->session->userdata('logged_in')): ?>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <?= $this->session->userdata('user_name'); ?>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="<?= base_url('profile'); ?>">Profile</a>
-                                    <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Logout</a>
-                                </div>
-                            </div>
-                        <?php else: ?>
-                            <!-- Tampilkan Login jika belum login -->
-                            <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('auth/login'); ?>'">
-                                Login
-                            </button>
-                        <?php endif; ?>
-                    </li>
-                </ul>
+              <!-- Nav Item - Login/Profile -->
+              <li class="nav-item">
+                <?php if ($this->session->userdata('logged_in')): ?>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <?= $this->session->userdata('user_name'); ?>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="<?= base_url('profile/profile'); ?>">Profile</a>
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                    </div>
+                  </div>
+                <?php else: ?>
+                  <!-- Tampilkan Login jika belum login -->
+                  <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('auth/login'); ?>'">
+                    Login
+                  </button>
+                <?php endif; ?>
+              </li>
             </ul>
+          </ul>
         </div>
       </nav>
       <!-- /main nav -->
@@ -126,3 +126,27 @@ Fixed Navigation
   <!--
 End Fixed Navigation
 ==================================== -->
+
+  <!-- Modal Logout -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- Header Modal -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Body Modal -->
+        <div class="modal-body">
+          Apakah Anda yakin ingin logout?
+        </div>
+        <!-- Footer Modal -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>

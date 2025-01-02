@@ -48,11 +48,11 @@
                                     <form class="user" method="POST" action="<?= site_url('auth/login'); ?>">
                                         <!-- Email Input -->
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." required>
+                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" aria-describedby="emailHelp" placeholder="Masukkan Email" required>
                                         </div>
                                         <!-- Password Input -->
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Password" required>
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Masukkan Password" required>
                                         </div>
                                         <!-- Remember Me Checkbox -->
                                         <div class="form-group">

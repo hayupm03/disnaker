@@ -137,15 +137,42 @@ class Profile extends CI_Controller
 
     public function profile()
     {
-        // Ambil data pengguna dari session atau database
-        $user_id = $this->session->userdata('id_user');
+        // Ambil user ID dari session
+        $userId = $this->session->userdata('user_id');
 
-        // Misalnya, ambil data profil pengguna dari model (sesuaikan dengan struktur database)
-        $this->load->model('profile_model');
-        $data['user'] = $this->user_model->get_user_by_id($id_user);
+        if (!$userId) {
+            redirect('login'); // Redirect jika belum login
+        }
 
-        // Tampilkan halaman profil
-        $this->load->view('frontend/partials/header');
+        // Ambil data user dari tabel `users`
+        $userData = $this->Profile_model->get_user_by_id($userId);
+
+        if (!$userData) {
+            show_error('User tidak ditemukan.');
+        }
+
+        // Cek data di tabel terkait (admin, mediator, pelapor)
+        $adminData = $this->Profile_model->get_admin_by_user_id($userId);
+        $mediatorData = $this->Profile_model->get_mediator_by_user_id($userId);
+        $pelaporData = $this->Profile_model->get_pelapor_by_user_id($userId);
+
+        // Tentukan data profil berdasarkan role
+        $userDetails = [];
+        if ($adminData) {
+            $userDetails = $adminData;
+        } elseif ($mediatorData) {
+            $userDetails = $mediatorData;
+        } elseif ($pelaporData) {
+            $userDetails = $pelaporData;
+        }
+
+        $data = [
+            'user' => $userData,
+            'user_details' => $userDetails
+        ];
+
+        // Load view
+        $this->load->view('frontend/partials/header', $data);
         $this->load->view('frontend/pages/profile', $data);
         $this->load->view('frontend/partials/footer');
     }
