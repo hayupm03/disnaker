@@ -22,6 +22,7 @@
                             <th>Role</th>
                             <th>Telepon</th>
                             <th>Email</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +50,14 @@
                                         <?= htmlspecialchars($user['admin_telp'] ?? $user['pelapor_telp'] ?? $user['mediator_telp']); ?>
                                     </td>
                                     <td><?= htmlspecialchars($user['email']); ?></td>
+                                    <td>
+                                    <a href="<?= base_url('user/edit/' . $user['id']); ?>" class="btn btn-warning btn-sm">
+                                        ✏️ <!-- Emoji untuk edit -->
+                                    </a>
+                                    <a href="<?= base_url('user/delete/' . $user['id']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?');">
+                                        🗑️ <!-- Emoji untuk hapus -->
+                                    </a>
+                                </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>

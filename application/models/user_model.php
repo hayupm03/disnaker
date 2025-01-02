@@ -100,3 +100,4 @@ class User_model extends CI_Model {
         return $query->row_array(); // Return a single row of user data
     }
 }
+

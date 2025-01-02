@@ -68,4 +68,42 @@ class User extends CI_Controller {
             redirect('user');
         }
     }
+
+    public function edit($id) {
+        $data['user'] = $this->UserModel->getUserById($id);
+
+        if (!$data['user']) {
+            $this->session->set_flashdata('error', 'User tidak ditemukan.');
+            redirect('user');
+        }
+
+        if ($this->input->post()) {
+            $updateData = [
+                'admin_name' => $this->input->post('name'),
+                'email' => $this->input->post('email'),
+                'admin_telp' => $this->input->post('telepon'),
+            ];
+
+            if ($this->UserModel->updateUser($id, $updateData)) {
+                $this->session->set_flashdata('success', 'User berhasil diperbarui.');
+                redirect('user');
+            } else {
+                $this->session->set_flashdata('error', 'Terjadi kesalahan saat memperbarui user.');
+            }
+        }
+
+        $this->load->view('backend/partials/header');
+        $this->load->view('backend/edit_user', $data);
+        $this->load->view('backend/partials/footer');
+    }
+
+    // Hapus user
+    public function delete($id) {
+        if ($this->UserModel->deleteUser($id)) {
+            $this->session->set_flashdata('success', 'User berhasil dihapus.');
+        } else {
+            $this->session->set_flashdata('error', 'Terjadi kesalahan saat menghapus user.');
+        }
+        redirect('user');
+    }
 }
