@@ -35,18 +35,6 @@
                         <?php echo form_error('nama_kasus', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="form-group">
-                        <label for="id_mediator">Nama Mediator</label>
-                        <select class="form-control" id="id_mediator" name="id_mediator">
-                            <option value="">-- Pilih Mediator --</option>
-                            <?php foreach ($mediators as $mediator): ?>
-                                <option value="<?= $mediator['id_mediator']; ?>" <?= set_select('id_mediator', $mediator['id_mediator']); ?>>
-                                    <?= htmlspecialchars($mediator['nama']); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <?php echo form_error('id_mediator', '<small class="text-danger">', '</small>'); ?>
-                    </div>
-                    <div class="form-group">
                         <label for="tgl_mediasi">Tanggal Mediasi</label>
                         <input type="date" class="form-control" id="tgl_mediasi" name="tgl_mediasi" value="<?php echo set_value('tgl_mediasi'); ?>">
                         <?php echo form_error('tgl_mediasi', '<small class="text-danger">', '</small>'); ?>
@@ -55,15 +43,6 @@
                         <label for="waktu_mediasi">Waktu Mediasi</label>
                         <input type="time" class="form-control" id="waktu_mediasi" name="waktu_mediasi" value="<?php echo set_value('waktu_mediasi'); ?>">
                         <?php echo form_error('waktu_mediasi', '<small class="text-danger">', '</small>'); ?>
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select class="form-control" id="status" name="status">
-                            <option value="disetujui" <?php echo set_select('status', 'disetujui'); ?>>Disetujui</option>
-                            <option value="ditolak" <?php echo set_select('status', 'ditolak'); ?>>Ditolak</option>
-                            <option value="diproses" <?php echo set_select('status', 'diproses'); ?>>Diproses</option>
-                        </select>
-                        <?php echo form_error('status', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="form-group">
                         <label for="tempat">Tempat</label>
