@@ -72,4 +72,20 @@ class Profile extends CI_Controller
             }
         }
     }
+
+    public function profile()
+    {
+        // Ambil data pengguna dari session atau database
+        $user_id = $this->session->userdata('id_user');
+        
+        // Misalnya, ambil data profil pengguna dari model (sesuaikan dengan struktur database)
+        $this->load->model('profile_model');
+        $data['user'] = $this->user_model->get_user_by_id($id_user);
+
+        // Tampilkan halaman profil
+        $this->load->view('frontend/partials/header');
+        $this->load->view('frontend/pages/profile', $data);
+        $this->load->view('frontend/partials/footer');
+    }
 }
+

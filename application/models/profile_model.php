@@ -12,4 +12,14 @@ class Profile_model extends CI_Model
 
         return $query->row_array(); // Return profile data as an array
     }
+
+
+    public function get_user_by_id($id_user)
+    {
+        $this->db->where('id', $id_user);
+        $query = $this->db->get('users');
+        return $query->row_array(); // Mengembalikan data pengguna dalam bentuk array
+    }
 }
+
+
