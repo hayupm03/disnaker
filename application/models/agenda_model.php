@@ -45,8 +45,11 @@ class Agenda_model extends CI_Model
 
     public function get_agenda_by_id($id)
     {
-        $this->db->where('id', $id);
-        $query = $this->db->get('agenda_mediasi');
+        $this->db->select('agenda_mediasi.*, mediator.nama as nama_mediator, mediator.telp as telp_mediator, mediator.nip as nip_mediator, mediator.bidang as bidang_mediator');
+        $this->db->from('agenda_mediasi');
+        $this->db->join('mediator', 'agenda_mediasi.id_mediator = mediator.id_mediator', 'left');
+        $this->db->where('agenda_mediasi.id', $id);
+        $query = $this->db->get();
         return $query->row_array();
     }
 

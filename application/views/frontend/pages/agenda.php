@@ -18,64 +18,69 @@
             <!-- Form Agenda -->
             <div class="col-lg-12">
                 <h2 class="mb-3">Form Agenda Mediasi</h2>
-                <form action="<?= site_url('agenda/save'); ?>" method="POST" enctype="multipart/form-data">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="nama_pihak1">Nama Pihak 1</label>
-                            <input type="text" class="form-control" id="nama_pihak1" name="nama_pihak1" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="nama_pihak2">Nama Pihak 2</label>
-                            <input type="text" class="form-control" id="nama_pihak2" name="nama_pihak2" required>
-                        </div>
+                <form action="<?php echo base_url('agenda/add'); ?>" method="post">
+                    <div class="form-group">
+                        <label for="nama_pihak_satu">Nama Pihak 1</label>
+                        <input type="text" class="form-control" id="nama_pihak_satu" name="nama_pihak_satu" value="<?php echo set_value('nama_pihak_satu'); ?>">
+                        <?php echo form_error('nama_pihak_satu', '<small class="text-danger">', '</small>'); ?>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="nama_kasus">Nama Kasus</label>
-                            <input type="text" class="form-control" id="nama_kasus" name="nama_kasus" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="jenis_kasus">Jenis Kasus</label>
-                            <input type="text" class="form-control" id="jenis_kasus" name="jenis_kasus" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="nama_pihak_dua">Nama Pihak 2</label>
+                        <input type="text" class="form-control" id="nama_pihak_dua" name="nama_pihak_dua" value="<?php echo set_value('nama_pihak_dua'); ?>">
+                        <?php echo form_error('nama_pihak_dua', '<small class="text-danger">', '</small>'); ?>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="nama_mediator">Nama Mediator</label>
-                            <input type="text" class="form-control" id="nama_mediator" name="nama_mediator" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="tgl_mediasi">Tanggal Mediasi</label>
-                            <input type="date" class="form-control" id="tgl_mediasi" name="tgl_mediasi" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="nama_kasus">Nama Kasus</label>
+                        <input type="text" class="form-control" id="nama_kasus" name="nama_kasus" value="<?php echo set_value('nama_kasus'); ?>">
+                        <?php echo form_error('nama_kasus', '<small class="text-danger">', '</small>'); ?>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="waktu_mediasi">Waktu Mediasi</label>
-                            <input type="time" class="form-control" id="waktu_mediasi" name="waktu_mediasi" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="tempat">Tempat Mediasi</label>
-                            <input type="text" class="form-control" id="tempat" name="tempat" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="id_mediator">Nama Mediator</label>
+                        <select class="form-control" id="id_mediator" name="id_mediator">
+                            <option value="">-- Pilih Mediator --</option>
+                            <?php foreach ($mediators as $mediator): ?>
+                                <option value="<?= $mediator['id_mediator']; ?>" <?= set_select('id_mediator', $mediator['id_mediator']); ?>>
+                                    <?= htmlspecialchars($mediator['nama']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <?php echo form_error('id_mediator', '<small class="text-danger">', '</small>'); ?>
                     </div>
-
+                    <div class="form-group">
+                        <label for="tgl_mediasi">Tanggal Mediasi</label>
+                        <input type="date" class="form-control" id="tgl_mediasi" name="tgl_mediasi" value="<?php echo set_value('tgl_mediasi'); ?>">
+                        <?php echo form_error('tgl_mediasi', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="waktu_mediasi">Waktu Mediasi</label>
+                        <input type="time" class="form-control" id="waktu_mediasi" name="waktu_mediasi" value="<?php echo set_value('waktu_mediasi'); ?>">
+                        <?php echo form_error('waktu_mediasi', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-control" id="status" name="status">
+                            <option value="disetujui" <?php echo set_select('status', 'disetujui'); ?>>Disetujui</option>
+                            <option value="ditolak" <?php echo set_select('status', 'ditolak'); ?>>Ditolak</option>
+                            <option value="diproses" <?php echo set_select('status', 'diproses'); ?>>Diproses</option>
+                        </select>
+                        <?php echo form_error('status', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="tempat">Tempat</label>
+                        <input type="text" class="form-control" id="tempat" name="tempat" value="<?php echo set_value('tempat'); ?>">
+                        <?php echo form_error('tempat', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="jenis_kasus">Jenis Kasus</label>
+                        <input type="text" class="form-control" id="jenis_kasus" name="jenis_kasus" value="<?php echo set_value('jenis_kasus'); ?>">
+                        <?php echo form_error('jenis_kasus', '<small class="text-danger">', '</small>'); ?>
+                    </div>
                     <div class="form-group">
                         <label for="deskripsi_kasus">Deskripsi Kasus</label>
-                        <textarea class="form-control" id="deskripsi_kasus" name="deskripsi_kasus" rows="4" required></textarea>
+                        <input type="text" class="form-control" id="deskripsi_kasus" name="deskripsi_kasus" value="<?php echo set_value('deskripsi_kasus'); ?>">
+                        <?php echo form_error('deskripsi_kasus', '<small class="text-danger">', '</small>'); ?>
                     </div>
-
-                    <div class="form-group">
-                        <label for="file_pdf">Upload File PDF</label>
-                        <input type="file" class="form-control-file" id="file_pdf" name="file_pdf" accept="application/pdf" required>
-                    </div>
-
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary">Simpan Agenda Mediasi</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">Tambah Agenda</button>
                 </form>
             </div>
         </div>
@@ -109,8 +114,8 @@ Start Blog Section
                         <div class="card shadow-sm h-100">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title mb-3 text-primary"><?= htmlspecialchars($agenda['nama_kasus']); ?></h5>
-                                <p class="mb-2"><strong>Pihak 1:</strong> <?= htmlspecialchars($agenda['nama_pihak1']); ?></p>
-                                <p class="mb-2"><strong>Pihak 2:</strong> <?= htmlspecialchars($agenda['nama_pihak2']); ?></p>
+                                <p class="mb-2"><strong>Pihak 1:</strong> <?= htmlspecialchars($agenda['nama_pihak_satu']); ?></p>
+                                <p class="mb-2"><strong>Pihak 2:</strong> <?= htmlspecialchars($agenda['nama_pihak_dua']); ?></p>
                                 <p class="mb-2"><strong>Tanggal:</strong> <?= htmlspecialchars(date("d-m-Y", strtotime($agenda['tgl_mediasi']))); ?></p>
                                 <p class="mb-3"><strong>Status:</strong>
                                     <span class="badge <?= $agenda['status'] === 'disetujui' ? 'badge-success' : ($agenda['status'] === 'ditolak' ? 'badge-danger' : 'badge-warning'); ?>">

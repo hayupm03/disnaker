@@ -56,14 +56,15 @@
                 Addons
             </div>
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-            <li class="nav-item <?= ($this->uri->segment(1) == 'user') ? 'active' : ''; ?>">
-                <a class="nav-link" href="<?= base_url('user'); ?>">
-                    <i class="fas fa-fw fa-user-cog"></i>
-                    <span>User</span>
-                </a>
-            </li>
+            <?php if ($this->session->userdata('user_type') == 'admin'): ?>
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?= ($this->uri->segment(1) == 'user') ? 'active' : ''; ?>">
+        <a class="nav-link" href="<?= base_url('user'); ?>">
+            <i class="fas fa-fw fa-user-cog"></i>
+            <span>User</span>
+        </a>
+    </li>
+<?php endif; ?>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
@@ -107,7 +108,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <?= $this->session->userdata('user_name'); ?>
+                                </span>
                                 <img class="img-profile rounded-circle"
                                     src="<?= base_url('assets/sbadmin/') ?>img/undraw_profile.svg">
                             </a>

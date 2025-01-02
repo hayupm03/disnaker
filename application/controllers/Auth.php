@@ -26,10 +26,13 @@ class Auth extends CI_Controller
                 $user_type = $this->Auth_model->get_user_type($user->id);
 
                 if ($user_type) {
+                    // Ambil nama dari hasil get_user_type
+                    $user_name = $user_type['nama'] ?? $user->nama;
+
                     // Simpan data session berdasarkan tipe user
                     $session_data = [
                         'user_id' => $user->id,
-                        'user_name' => $user->nama,
+                        'user_name' => $user_name,
                         'email' => $user->email,
                         'user_type' => $user_type['type'],
                         'type_id' => $user_type['id'],

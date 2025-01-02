@@ -87,8 +87,8 @@
 
 <!--================================
 =            Google Map            =
-=================================-->
+=================================
 <div class="google-map">
 	<div id="map_canvas" class="map_canvas" data-latitude="40.712776" data-longitude="-74.005974" data-marker="images/marker.png" data-marker-name="Bingo"></div>
 </div>
-<!--====  End of Google Map  ====-->
+ End of Google Map  ====-->

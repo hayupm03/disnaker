@@ -23,27 +23,27 @@ class Auth_model extends CI_Model
     }
 
     public function get_user_type($user_id)
-    {
-        // Cek tabel admin
-        $admin = $this->db->get_where('admin', ['id_user' => $user_id])->row();
-        if ($admin) {
-            return ['type' => 'admin', 'id' => $admin->id];
-        }
-
-        // Cek tabel pelapor
-        $pelapor = $this->db->get_where('pelapor', ['id_user' => $user_id])->row();
-        if ($pelapor) {
-            return ['type' => 'pelapor', 'id' => $pelapor->id];
-        }
-
-        // Cek tabel mediator
-        $mediator = $this->db->get_where('mediator', ['id_users' => $user_id])->row();
-        if ($mediator) {
-            return ['type' => 'mediator', 'id' => $mediator->id_mediator];
-        }
-
-        return null; // Jika tidak ditemukan
+{
+    // Cek tabel admin
+    $admin = $this->db->get_where('admin', ['id_user' => $user_id])->row();
+    if ($admin) {
+        return ['type' => 'admin', 'id' => $admin->id, 'nama' => $admin->nama];
     }
+
+    // Cek tabel pelapor
+    $pelapor = $this->db->get_where('pelapor', ['id_user' => $user_id])->row();
+    if ($pelapor) {
+        return ['type' => 'pelapor', 'id' => $pelapor->id, 'nama' => $pelapor->nama];
+    }
+
+    // Cek tabel mediator
+    $mediator = $this->db->get_where('mediator', ['id_user' => $user_id])->row();
+    if ($mediator) {
+        return ['type' => 'mediator', 'id' => $mediator->id_mediator, 'nama' => $mediator->nama];
+    }
+
+    return null; // Jika tidak ditemukan
+}
 
 
     public function register_user($data)
