@@ -27,8 +27,8 @@
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($agenda['nama_kasus']); ?></h5>
                             <p><strong>Nomor Mediasi:</strong> <?= htmlspecialchars($agenda['nomor_mediasi']); ?></p>
-                            <p><strong>Pihak 1:</strong> <?= htmlspecialchars($agenda['nama_pihak1']); ?></p>
-                            <p><strong>Pihak 2:</strong> <?= htmlspecialchars($agenda['nama_pihak2']); ?></p>
+                            <p><strong>Pihak 1:</strong> <?= htmlspecialchars($agenda['nama_pihak_satu']); ?></p>
+                            <p><strong>Pihak 2:</strong> <?= htmlspecialchars($agenda['nama_pihak_dua']); ?></p>
                             <p><strong>Nama Mediator:</strong> <?= htmlspecialchars($agenda['nama_mediator']); ?></p>
                             <p><strong>Tanggal Mediasi:</strong> <?= htmlspecialchars($agenda['tgl_mediasi']); ?></p>
                             <p><strong>Waktu Mediasi:</strong> <?= htmlspecialchars($agenda['waktu_mediasi']); ?></p>

@@ -173,3 +173,4 @@ class User_model extends CI_Model
         return $this->db->update('users', ['password' => $password]);
     }
 }
+

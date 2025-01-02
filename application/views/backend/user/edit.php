@@ -44,11 +44,12 @@
                 <!-- Select Role -->
                 <div class="form-group">
                     <label for="role">Role</label>
-                    <select name="role" id="role" class="form-control" required>
+                    <select name="role_display" id="role" class="form-control" disabled>
                         <option value="admin" <?= ($user['admin_name'] ? 'selected' : ''); ?>>Admin</option>
                         <option value="mediator" <?= ($user['mediator_name'] ? 'selected' : ''); ?>>Mediator</option>
                         <option value="pelapor" <?= ($user['pelapor_name'] ? 'selected' : ''); ?>>Pelapor</option>
                     </select>
+                    <input type="hidden" name="role" value="<?= ($user['admin_name'] ? 'admin' : ($user['mediator_name'] ? 'mediator' : 'pelapor')); ?>">
                 </div>
 
                 <!-- Optional Fields for Different Roles -->

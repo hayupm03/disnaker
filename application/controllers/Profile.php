@@ -7,10 +7,11 @@ class Profile extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model');  // Load the model to retrieve user data
+        $this->load->model('user_model');
+        $this->load->model('Profile_model');
+        $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->helper('form');
-        $this->load->library('form_validation');
 
         // Ensure the user is logged in
         if (!$this->session->userdata('logged_in')) {
@@ -18,58 +19,134 @@ class Profile extends CI_Controller
         }
     }
 
-    // Display the profile page
     public function index()
     {
-        // Get the user ID from the session
+        // Ambil user ID dari session
         $userId = $this->session->userdata('user_id');
 
-        // Retrieve user data based on user_id
-        $userData = $this->user_model->getUserProfile($userId);
-        $data['user'] = $userData; // Send profile data to the view
+        if (!$userId) {
+            redirect('login'); // Redirect jika belum login
+        }
 
-        // Retrieve additional user data if necessary
-        $userById = $this->user_model->getUserById($userId);
-        $data['user_details'] = $userById; // Additional details for the profile
+        // Ambil data user dari tabel `users`
+        $userData = $this->Profile_model->get_user_by_id($userId);
 
-        // Load the profile page
+        if (!$userData) {
+            show_error('User tidak ditemukan.');
+        }
+
+        // Cek data di tabel terkait (admin, mediator, pelapor)
+        $adminData = $this->Profile_model->get_admin_by_user_id($userId);
+        $mediatorData = $this->Profile_model->get_mediator_by_user_id($userId);
+        $pelaporData = $this->Profile_model->get_pelapor_by_user_id($userId);
+
+        // Tentukan data profil berdasarkan role
+        $userDetails = [];
+        if ($adminData) {
+            $userDetails = $adminData;
+        } elseif ($mediatorData) {
+            $userDetails = $mediatorData;
+        } elseif ($pelaporData) {
+            $userDetails = $pelaporData;
+        }
+
+        $data = [
+            'user' => $userData,
+            'user_details' => $userDetails
+        ];
+
+        // Load view
         $this->load->view('backend/partials/header', $data);
-        $this->load->view('backend/profile/profile', $data);
+        $this->load->view('backend/profile/view', $data);
         $this->load->view('backend/partials/footer');
     }
 
-    // Function to update the user profile
     public function update()
     {
-        $userId = $this->session->userdata('user_id');
+        $user_id = $this->session->userdata('user_id');
+        if (!$user_id) {
+            redirect('login');
+        }
 
-        // Form validation
-        $this->form_validation->set_rules('name', 'Nama', 'required');
+        // Validasi umum
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('phone', 'Nomor Telepon', 'required');
 
-        if ($this->form_validation->run() == FALSE) {
-            // If validation fails, reload the profile page
-            $this->index();
-        } else {
-            // Get updated data from the form
-            $updatedData = [
-                'nama' => $this->input->post('name'),
-                'email' => $this->input->post('email'),
-                'telp' => $this->input->post('phone'),
-                'alamat' => $this->input->post('address') // Assuming the address field exists
-            ];
+        // Validasi password jika salah satu diisi
+        if (
+            !empty($this->input->post('current_password')) ||
+            !empty($this->input->post('new_password')) ||
+            !empty($this->input->post('confirm_password'))
+        ) {
+            $this->form_validation->set_rules('current_password', 'Password Lama', 'required');
+            $this->form_validation->set_rules('new_password', 'Password Baru', 'min_length[6]');
+            $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password Baru', 'matches[new_password]');
+        }
 
-            // Update user profile data
-            if ($this->user_model->updateUser($userId, $updatedData)) {
-                // If successful, set success message and redirect
-                $this->session->set_flashdata('success', 'Profil berhasil diperbarui.');
-                redirect('profile');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect('profile');
+        }
+
+        // Update data umum
+        $data_users = [
+            'email' => $this->input->post('email')
+        ];
+
+        $current_password = $this->input->post('current_password');
+        $new_password = $this->input->post('new_password');
+
+        if (!empty($current_password)) {
+            if ($this->Profile_model->verify_password($user_id, $current_password)) {
+                if (!empty($new_password)) {
+                    $data_users['password'] = password_hash($new_password, PASSWORD_BCRYPT);
+                }
             } else {
-                // If there's an error, set error message and reload the profile page
-                $this->session->set_flashdata('error', 'Terjadi kesalahan saat memperbarui profil.');
-                $this->index();
+                $this->session->set_flashdata('error', 'Password lama salah.');
+                redirect('profile');
             }
         }
+
+        $this->Profile_model->update_user($user_id, $data_users);
+
+        // Cek peran pengguna dan update tabel terkait
+        $role = $this->Profile_model->get_user_role($user_id);
+        $data_role = [
+            'telp' => $this->input->post('phone'),
+            'nama' => $this->input->post('nama')
+        ];
+
+        switch ($role) {
+            case 'pelapor':
+                $this->Profile_model->update_pelapor($user_id, $data_role);
+                break;
+            case 'mediator':
+                $this->Profile_model->update_mediator($user_id, $data_role);
+                break;
+            case 'admin':
+                $this->Profile_model->update_admin($user_id, $data_role);
+                break;
+            default:
+                $this->session->set_flashdata('error', 'Role tidak dikenali.');
+                redirect('profile');
+        }
+
+        $this->session->set_flashdata('success', 'Profil berhasil diperbarui.');
+        redirect('profile');
+    }
+
+    public function profile()
+    {
+        // Ambil data pengguna dari session atau database
+        $user_id = $this->session->userdata('id_user');
+
+        // Misalnya, ambil data profil pengguna dari model (sesuaikan dengan struktur database)
+        $this->load->model('profile_model');
+        $data['user'] = $this->user_model->get_user_by_id($id_user);
+
+        // Tampilkan halaman profil
+        $this->load->view('frontend/partials/header');
+        $this->load->view('frontend/pages/profile', $data);
+        $this->load->view('frontend/partials/footer');
     }
 }

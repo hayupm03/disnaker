@@ -75,39 +75,49 @@ Fixed Navigation
         </button>
 
         <div class="collapse navbar-collapse" id="navigation">
-          <ul class="navbar-nav ml-auto text-center">
-            <li class="nav-item dropdown <?php echo ($this->uri->segment(1) == '') ? 'active' : ''; ?>">
-              <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>">
-                Home
-              </a>
-            </li>
-            <ul class="navbar-nav ml-auto d-flex align-items-center">
-              <ul class="navbar-nav ml-auto d-flex align-items-center">
+            <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item dropdown <?php echo ($this->uri->segment(1) == '') ? 'active' : ''; ?>">
+                    <a class="nav-link dropdown-toggle" href="<?php echo base_url(); ?>">
+                        Home
+                    </a>
+                </li>
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
-                  <!-- Nav Item - Agenda -->
-                  <li class="nav-item <?php echo ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
-                  </li>
+                    <!-- Nav Item - Agenda -->
+                    <li class="nav-item <?php echo ($this->uri->segment(1) == 'agenda') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
+                    </li>
 
-                  <!-- Nav Item - Arsip -->
-                  <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
-                  </li>
+                    <!-- Nav Item - Arsip -->
+                    <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
+                    </li>
 
-                  <!-- Nav Item - Kontak -->
-                  <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
-                    <a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak</a>
-                  </li>
+                    <!-- Nav Item - Kontak -->
+                    <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
+                        <a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak</a>
+                    </li>
 
-                  <!-- Nav Item - Tiga Titik (Dropdown) -->
-                  <li class="nav-item">
-                    <!-- Button Login -->
-                    <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('auth/login'); ?>'">
-                      Login
-                    </button>
-                  </li>
+                    <!-- Nav Item - Login/Profile -->
+                    <li class="nav-item">
+                        <?php if ($this->session->userdata('logged_in')): ?>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?= $this->session->userdata('user_name'); ?>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="<?= base_url('profile'); ?>">Profile</a>
+                                    <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Logout</a>
+                                </div>
+                            </div>
+                        <?php else: ?>
+                            <!-- Tampilkan Login jika belum login -->
+                            <button class="btn btn-primary" onclick="window.location.href='<?php echo base_url('auth/login'); ?>'">
+                                Login
+                            </button>
+                        <?php endif; ?>
+                    </li>
                 </ul>
-              </ul>
+            </ul>
         </div>
       </nav>
       <!-- /main nav -->

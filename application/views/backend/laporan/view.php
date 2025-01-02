@@ -47,9 +47,13 @@
                                     <td><?= htmlspecialchars($laporan['jenis_kasus']); ?></td>
                                     <td><?= htmlspecialchars($laporan['hasil_mediasi']); ?></td>
                                     <td>
-                                        <a href="<?= base_url('laporan/edit/' . $laporan['id_laporan']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="<?= base_url('laporan/delete/' . $laporan['id_laporan']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">Hapus</a>
-                                    </td>
+                                    <a href="<?= base_url('laporan/edit/' . $laporan['id_laporan']); ?>" class="btn btn-warning btn-sm">
+                                        ✏️ <!-- Emoji untuk edit -->
+                                    </a>
+                                    <a href="<?= base_url('laporan/delete/' . $laporan['id_laporan']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                        🗑️ <!-- Emoji untuk hapus -->
+                                    </a>
+                                </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else : ?>
