@@ -98,8 +98,10 @@ class Laporan extends CI_Controller
 
         // Jika form disubmit
         if ($this->input->post()) {
-            // Validasi form
-            $this->_validate_form();
+            $this->form_validation->set_rules('agenda_mediasi_id', 'Agenda Mediasi', 'required');
+            $this->form_validation->set_rules('tgl_penutupan', 'Tanggal Penutupan', 'required');
+            $this->form_validation->set_rules('status', 'Status', 'required');
+            $this->form_validation->set_rules('hasil_mediasi', 'Hasil Mediasi', 'required');
 
             // Jika form valid, lakukan update
             if ($this->form_validation->run()) {
