@@ -4,12 +4,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Agenda_model extends CI_Model
 {
 
-    public function get_agendas()
+    public function get_agendas($id = NULL)
     {
         $this->db->select('agenda_mediasi.*, mediator.nama as nama_mediator');
         $this->db->from('agenda_mediasi');
-        $this->db->join('mediator', 'mediator.id_mediator = agenda_mediasi.id_mediator', 'left'); // Join dengan mediator pada kolom id_mediator
+        $this->db->join('mediator', 'mediator.id_mediator = agenda_mediasi.id_mediator', 'left');
+        if ($id !== NULL) {
+            $this->db->where('agenda_mediasi.id_pelapor', $id);
+        }
+
         $query = $this->db->get();
+
         return $query->result_array();
     }
 

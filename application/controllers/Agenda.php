@@ -7,7 +7,7 @@ class Agenda extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('agenda_model'); // Memuat model
+        $this->load->model('agenda_model');
         $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('upload');
@@ -15,7 +15,9 @@ class Agenda extends CI_Controller
 
     public function index()
     {
-        $data['agendas'] = $this->agenda_model->get_agendas();
+        // Ambil user_id dari session
+        $user_id = $this->session->userdata('user_id');
+        $data['agendas'] = $this->agenda_model->get_agendas($user_id);
         $data['mediators'] = $this->agenda_model->get_mediators_agenda();
 
         $this->load->view('frontend/partials/header');
@@ -46,6 +48,8 @@ class Agenda extends CI_Controller
                 $nomor_mediasi = rand(1000, 9999);
             } while ($this->agenda_model->is_nomor_mediasi_exists($nomor_mediasi));
 
+            $user_id = $this->session->userdata('user_id');
+            
             // Collect form data without id_mediator
             $agenda_data = array(
                 'nomor_mediasi' => $nomor_mediasi,
@@ -53,7 +57,7 @@ class Agenda extends CI_Controller
                 'nama_pihak_dua' => $this->input->post('nama_pihak_dua'),
                 'nama_kasus' => $this->input->post('nama_kasus'),
                 // Hapus id_mediator dari data yang dikirimkan
-                // 'id_mediator' => $this->input->post('id_mediator'),  
+                'id_pelapor' => $user_id,
                 'tgl_mediasi' => $this->input->post('tgl_mediasi'),
                 'waktu_mediasi' => $this->input->post('waktu_mediasi'),
                 'status' => "diproses",
