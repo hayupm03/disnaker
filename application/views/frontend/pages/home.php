@@ -55,9 +55,10 @@ Start About Section
 				<div class="row text-center">
 					<div class="col-md-6 col-sm-6">
 						<div class="service-item">
-							<i class="tf-ion-ios-alarm-outline"></i>
-							<h4>Time Management</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis.</p>
+						<div class="icon text-center"><i class="bi bi-file-earmark-person"></i></div>
+							<h4>Kartu Kuning AK1</h4>
+							<p>Untuk mendapatkan info lowongan kerja, melamar kerja, mendaftar rekrutmen, serta menerima undangan interview dari perusahaan melalui SIKER.
+							</p>
 						</div>
 					</div><!-- END COL -->
 					<div class="col-md-6 col-sm-6">
@@ -90,7 +91,7 @@ Start About Section
 <!--
 Start About Section
 ==================================== -->
-<section class="about-2 section pb-0" id="about">
+<section class="about-2 section pb-5" id="about">
 	<div class="container">
 		<div class="row justify-content-center">
 			<!-- section title -->
@@ -106,7 +107,8 @@ Start About Section
 
 		<div class="row align-items-center">
 			<div class="col-md-6 mb-4 mb-md-0">
-				<img loading="lazy" src="assets/images/about/2.png" class="img-fluid" alt="">
+			<img loading="lazy" src="<?= base_url('assets/images/about/2.jpg') ?>" class="img-fluid" alt="">
+
 			</div>
 			<div class="col-md-6">
 				<ul class="checklist">
@@ -121,95 +123,78 @@ Start About Section
 	</div> <!-- End container -->
 </section>
 
-<!-- End section -->
+<!-- End section 
 
-<!--Start Call To Action
-==================================== -->
-<section class="call-to-action section">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-xl-6 col-lg-8 text-center">
-				<h2>Let's Create Something Together</h2>
-				<p>Hubungi kami untuk informasi lebih lanjut atau konsultasi. Tim kami siap memberikan solusi terbaik untuk kebutuhan Anda.</p>
-				<a href="contact.html" class="btn btn-main">Contact Us</a>
-			</div>
-		</div> <!-- End row -->
-	</div> <!-- End container -->
-</section>
-
-
-<!--Start Counter Section
-==================================== -->
-<section class="counter-wrapper section-sm">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-xl-6 col-lg-8 text-center">
-				<div class="title">
-					<h2>Award-Winning Agency</h2>
-					<p>Vestibulum nisl tortor, consectetur quis imperdiet bibendum, laoreet sed arcu. Sed condimentum iaculis ex, in faucibus lorem accumsan non. Donec mattis tincidunt metus. Morbi sed tortor a risus luctus dignissim.</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<!-- first count item -->
-			<div class="col-md-3 col-sm-6 col-xs-6 text-center ">
-				<div class="counters-item">
-					<i class="tf-ion-ios-alarm-outline"></i>
-					<div>
-						<span class="counter" data-count="150">0</span>
-					</div>
-					<h3>Happy Clients</h3>
-				</div>
-			</div>
-			<!-- end first count item -->
-
-			<!-- second count item -->
-			<div class="col-md-3 col-sm-6 col-xs-6 text-center ">
-				<div class="counters-item">
-					<i class="tf-ion-ios-analytics-outline"></i>
-					<div>
-						<span class="counter" data-count="130">0</span>
-					</div>
-					<h3>Projects completed</h3>
-				</div>
-			</div>
-			<!-- end second count item -->
-
-			<!-- third count item -->
-			<div class="col-md-3 col-sm-6 col-xs-6 text-center ">
-				<div class="counters-item">
-					<i class="tf-ion-ios-compose-outline"></i>
-					<div>
-						<span class="counter" data-count="99">0</span>
-					</div>
-					<h3>Positive feedback</h3>
-
-				</div>
-			</div>
-			<!-- end third count item -->
-
-			<!-- fourth count item -->
-			<div class="col-md-3 col-sm-6 col-xs-6 text-center ">
-				<div class="counters-item kill-border">
-					<i class="tf-ion-ios-bolt-outline"></i>
-					<div>
-						<span class="counter" data-count="250">0</span>
-					</div>
-					<h3>Cups of Coffee</h3>
-				</div>
-			</div>
-			<!-- end fourth count item -->
-		</div> <!-- end row -->
-	</div> <!-- end container -->
-</section> <!-- end section -->
+<section id="featured-services" class="featured-services section-bg pt-5">
+    <div class="container">
+        <div class="row no-gutters">
+           
+            <div class="col-lg-3 col-md-6">
+                <div class="icon-box">
+                    <div class="icon text-center"><i class="bi bi-file-earmark-person"></i></div>
+                    <h4 class="title">
+                        <a class="linkBtn" href="https://disnaker.semarangkota.go.id/layanan/wShPi3EwHGSEUpfH7xpjBVdy6wmLojGGy8HNOXCVgrfZ2FOQflKrUXRPLQyHU02i">
+                            Kartu Kuning (AK1)
+                        </a>
+                    </h4>
+                    <p class="description">
+                        Untuk mendapatkan info lowongan kerja, melamar kerja, mendaftar rekrutmen, serta menerima undangan interview dari perusahaan melalui SIKER.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="icon-box">
+                    <div class="icon text-center"><i class="bi bi-airplane-engines-fill"></i></div>
+                    <h4 class="title">
+                        <a class="linkBtn" href="https://disnaker.semarangkota.go.id/layanan/DFQmrdPkp4HeBa3s9OeitrMyK5hO7bXN5MW7xUo3TBLYEEUEXhpuI6O0iyu5ygiu">
+                            Rekom Paspor CPMI
+                        </a>
+                    </h4>
+                    <p class="description">
+                        Dokumen persetujuan yang diperlukan dalam pengurusan Paspor CPMI (Calon Pekerja Migran Indonesia) saat mengurus Paspor di Kantor Imigrasi.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="icon-box">
+                    <div class="icon text-center"><i class="bi bi-tools"></i></div>
+                    <h4 class="title">
+                        <a class="linkBtn" href="https://disnaker.semarangkota.go.id/layanan/37SuIkS8q76XSIZJxrHDhEOXuqpQByx58gnz6sBket0OQ1ov0ge2u1puLt7tV6YL">
+                            Pelatihan BLK
+                        </a>
+                    </h4>
+                    <p class="description">
+                        Pelatihan berbasis kompetensi yang bertujuan untuk meningkatkan kompetensi bagi masyarakat Kota Semarang dan sekitarnya.
+                    </p>
+                </div>
+            </div>
+         
+            <div class="col-lg-3 col-md-6">
+                <div class="icon-box">
+                    <div class="icon text-center"><i class="bi bi-building-fill-exclamation"></i></div>
+                    <h4 class="title">
+                        <a class="linkBtn" href="https://disnaker.semarangkota.go.id/layanan/2mFwm5h6VHIongDOult53LCS7PQuirccLGlhMPF5s4vzSTEkOC7KXunbrcVgIsld">
+                            Hubungan Industrial
+                        </a>
+                    </h4>
+                    <p class="description">
+                        Penyelesaian perselisihan Hubungan Industrial, antara pekerja dengan perusahaan, perusahaan dengan pekerja, serta pekerja dengan pekerja.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>    Hubungan Industrial -->
 
 <!--
 Start Blog Section
-=========================================== -->
+=========================================== 
 <section class="blog" id="blog">
 	<div class="container">
 		<div class="row justify-content-center">
-			<!-- section title -->
+			
 			<div class="col-xl-6 col-lg-8">
 				<div class="title text-center ">
 					<h2> Riwayat <span class="color">Mediasi</span></h2>
@@ -217,11 +202,10 @@ Start Blog Section
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus facere accusamus, reprehenderit libero inventore nam.</p>
 				</div>
 			</div>
-			<!-- /section title -->
+			
 		</div>
 
 		<div class="row">
-			<!-- single blog post -->
 			<article class="col-lg-4 col-md-6">
 				<div class="post-item">
 					<div class="media-wrapper">
@@ -236,9 +220,7 @@ Start Blog Section
 					</div>
 				</div>
 			</article>
-			<!-- /single blog post -->
-
-			<!-- single blog post -->
+			
 			<article class="col-lg-4 col-md-6">
 				<div class="post-item">
 					<div class="media-wrapper">
@@ -253,9 +235,7 @@ Start Blog Section
 					</div>
 				</div>
 			</article>
-			<!-- end single blog post -->
-
-			<!-- single blog post -->
+		
 			<article class="col-lg-4 col-md-6">
 				<div class="post-item">
 					<div class="media-wrapper">
@@ -270,7 +250,6 @@ Start Blog Section
 					</div>
 				</div>
 			</article>
-			<!-- end single blog post -->
-		</div> <!-- end row -->
-	</div> <!-- end container -->
-</section> <!-- end section -->
+		</div> 
+	</div> 
+</section>  end section -->
