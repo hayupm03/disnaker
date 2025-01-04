@@ -1,30 +1,39 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Pastikan autoload Composer dipanggil
+require_once FCPATH . 'vendor/autoload.php';
+
+use Dompdf\Dompdf;
+
 class Cetak extends CI_Controller
 {
-
-    public function generate_pdf()
+    public function __construct()
     {
-        $this->load->library('Dompdf_lib'); // Memuat library Dompdf_lib
+        parent::__construct();
+        $this->load->model('Laporan_model');
+    }
 
-        // Data untuk ditampilkan di PDF
-        $data['title'] = 'Judul Dokumen';
-        $data['content'] = 'Ini adalah konten PDF.';
+    public function laporan()
+    {
+        // Data untuk laporan
+        $data['title'] = "Laporan Mediasi";
+        $data['media'] = $this->Laporan_model->getLaporan();
 
-        // Load view dan konversi menjadi string
-        $html = $this->load->view('pdf_template', $data, TRUE);
+        // Load view sebagai HTML
+        $html = $this->load->view('backend/pdf/laporan', $data, true);
 
-        // Muat HTML ke Dompdf
-        $this->dompdf_lib->loadHtml($html);
+        // Inisialisasi Dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
 
-        // Atur ukuran kertas dan orientasi
-        $this->dompdf_lib->setPaper('A4', 'portrait');
+        // Set ukuran dan orientasi kertas
+        $dompdf->setPaper('A4', 'portrait');
 
         // Render PDF
-        $this->dompdf_lib->render();
+        $dompdf->render();
 
-        // Kirimkan ke browser untuk diunduh
-        $this->dompdf_lib->stream("contoh.pdf", ["Attachment" => 0]); // 0: Tampilkan di browser, 1: Unduh langsung
+        // Output PDF ke browser
+        $dompdf->stream("laporan_media.pdf", array("Attachment" => 0));
     }
 }
