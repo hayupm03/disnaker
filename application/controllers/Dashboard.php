@@ -37,8 +37,22 @@ class Dashboard extends CI_Controller
         $data['agenda_totals'] = $monthly_totals;
 
         // Siapkan data untuk chart pelaporan
-        $data['pelaporan_status'] = array_column($pelaporan_status_totals, 'status');
-        $data['pelaporan_totals'] = array_column($pelaporan_status_totals, 'total');
+        $data['pelaporan_status'] = ['Selesai', 'Dilanjut ke Pengadilan']; // Daftar status yang diinginkan
+        $status_totals = [
+            'selesai' => 0,
+            'dilanjut ke pengadilan' => 0
+        ];
+
+        // Loop melalui data pelaporan_status_totals dan masukkan total berdasarkan status
+        foreach ($pelaporan_status_totals as $total) {
+            if (isset($status_totals[$total['status']])) {
+                $status_totals[$total['status']] = $total['total'];
+            }
+        }
+
+        // Pisahkan total status selesai dan dilanjut ke pengadilan
+        $data['total_status_selesai'] = $status_totals['selesai'];
+        $data['total_status_lanjut'] = $status_totals['dilanjut ke pengadilan'];
 
         // Data untuk card
         $data['total_mediator'] = $this->Dashboard_model->get_total_mediator();

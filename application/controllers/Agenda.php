@@ -30,12 +30,10 @@ class Agenda extends CI_Controller
         // Set validation rules for form input
         $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak 1', 'required');
         $this->form_validation->set_rules('nama_pihak_dua', 'Nama Pihak 2', 'required');
-        $this->form_validation->set_rules('nama_kasus', 'Nama Kasus', 'required');
-        // Hapus validasi id_mediator
         // $this->form_validation->set_rules('id_mediator', 'Nama Mediator', 'required');
         $this->form_validation->set_rules('tgl_mediasi', 'Tanggal Mediasi', 'required');
         $this->form_validation->set_rules('waktu_mediasi', 'Waktu Mediasi', 'required');
-        $this->form_validation->set_rules('tempat', 'Tempat', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('jenis_kasus', 'Jenis Kasus', 'required');
         $this->form_validation->set_rules('deskripsi_kasus', 'Deskripsi Kasus', 'required');
 
@@ -55,13 +53,11 @@ class Agenda extends CI_Controller
                 'nomor_mediasi' => $nomor_mediasi,
                 'nama_pihak_satu' => $this->input->post('nama_pihak_satu'),
                 'nama_pihak_dua' => $this->input->post('nama_pihak_dua'),
-                'nama_kasus' => $this->input->post('nama_kasus'),
-                // Hapus id_mediator dari data yang dikirimkan
                 'id_pelapor' => $user_id,
                 'tgl_mediasi' => $this->input->post('tgl_mediasi'),
                 'waktu_mediasi' => $this->input->post('waktu_mediasi'),
                 'status' => "diproses",
-                'tempat' => $this->input->post('tempat'),
+                'tempat' => $this->input->post('alamat'),
                 'jenis_kasus' => $this->input->post('jenis_kasus'),
                 'deskripsi_kasus' => $this->input->post('deskripsi_kasus')
             );

@@ -17,25 +17,26 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="mb-3">Form Agenda Mediasi</h2>
-                <?php if ($this->session->userdata('user_id')) : ?> <!-- Jika pengguna sudah login -->
+                <?php if ($this->session->userdata('user_id')) : ?>
                     <form action="<?php echo base_url('agenda/add'); ?>" method="post">
                         <div class="form-group">
                             <label for="nama_pihak_satu">Nama Pihak 1</label>
-                            <input type="text" class="form-control" id="nama_pihak_satu" name="nama_pihak_satu" value="<?php echo set_value('nama_pihak_satu'); ?>" required>
+                            <input type="text"
+                                class="form-control"
+                                id="nama_pihak_satu"
+                                name="nama_pihak_satu"
+                                value="<?php echo set_value('nama_pihak_satu', $this->session->userdata('user_name')); ?>"
+                                placeholder="Nama Pihak Satu"
+                                required>
                             <?php echo form_error('nama_pihak_satu', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="nama_pihak_dua">Nama Pihak 2</label>
-                            <input type="text" class="form-control" id="nama_pihak_dua" name="nama_pihak_dua" value="<?php echo set_value('nama_pihak_dua'); ?>" required>
+                            <input type="text" class="form-control" id="nama_pihak_dua" name="nama_pihak_dua" value="<?php echo set_value('nama_pihak_dua'); ?>" placeholder="Nama Pihak 2" required>
                             <?php echo form_error('nama_pihak_dua', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="nama_kasus">Nama Kasus</label>
-                            <input type="text" class="form-control" id="nama_kasus" name="nama_kasus" value="<?php echo set_value('nama_kasus'); ?>" required>
-                            <?php echo form_error('nama_kasus', '<small class="text-danger">', '</small>'); ?>
-                        </div>
-                        <div class="form-group">
-                            <label for="tgl_mediasi">Tanggal Mediasi</label>
+                            <label for="tgl_mediasi">Tanggal Ajuan</label>
                             <input type="date" class="form-control" id="tgl_mediasi" name="tgl_mediasi" value="<?php echo set_value('tgl_mediasi'); ?>" required>
                             <?php echo form_error('tgl_mediasi', '<small class="text-danger">', '</small>'); ?>
                         </div>
@@ -45,18 +46,18 @@
                             <?php echo form_error('waktu_mediasi', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="tempat">Tempat</label>
-                            <input type="text" class="form-control" id="tempat" name="tempat" value="<?php echo set_value('tempat'); ?>" required>
-                            <?php echo form_error('tempat', '<small class="text-danger">', '</small>'); ?>
+                            <label for="alamat">Alamat</label>
+                            <input type="text" class="form-control" id="alamat" name="alamat" value="<?php echo set_value('alamat'); ?>" placeholder="Alamat" required>
+                            <?php echo form_error('alamat', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="jenis_kasus">Jenis Kasus</label>
-                            <input type="text" class="form-control" id="jenis_kasus" name="jenis_kasus" value="<?php echo set_value('jenis_kasus'); ?>" required>
+                            <input type="text" class="form-control" id="jenis_kasus" name="jenis_kasus" value="<?php echo set_value('jenis_kasus'); ?>" placeholder="Jenis Kasus" required>
                             <?php echo form_error('jenis_kasus', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="form-group">
                             <label for="deskripsi_kasus">Deskripsi Kasus</label>
-                            <input type="text" class="form-control" id="deskripsi_kasus" name="deskripsi_kasus" value="<?php echo set_value('deskripsi_kasus'); ?>" required>
+                            <input type="text" class="form-control" id="deskripsi_kasus" name="deskripsi_kasus" value="<?php echo set_value('deskripsi_kasus'); ?>" placeholder="Deskripsi Kasus" required>
                             <?php echo form_error('deskripsi_kasus', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <button type="submit" class="btn btn-primary">Tambah Agenda</button>

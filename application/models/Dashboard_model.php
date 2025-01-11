@@ -42,11 +42,14 @@ class Dashboard_model extends CI_Model
         return $this->db->get('agenda_mediasi')->result_array();
     }
 
-    // Menghitung total berdasarkan status di tabel pelaporan_mediasi
+    // Menghitung total berdasarkan status 'selesai' dan 'dilanjut ke pengadilan' pada tabel pelaporan_mediasi
     public function get_pelaporan_status_totals()
     {
+        // Query untuk menghitung status 'selesai' dan 'dilanjut ke pengadilan'
         $this->db->select('status, COUNT(*) as total');
+        $this->db->where_in('status', ['selesai', 'dilanjut ke pengadilan']);
         $this->db->group_by('status');
+
         return $this->db->get('laporan_mediasi')->result_array();
     }
 }
