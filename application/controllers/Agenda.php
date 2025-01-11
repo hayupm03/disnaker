@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Agenda extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -15,7 +14,6 @@ class Agenda extends CI_Controller
 
     public function index()
     {
-        // Ambil user_id dari session
         $user_id = $this->session->userdata('user_id');
         $data['agendas'] = $this->agenda_model->get_agendas($user_id);
         $data['mediators'] = $this->agenda_model->get_mediators_agenda();
@@ -30,7 +28,6 @@ class Agenda extends CI_Controller
         // Set validation rules for form input
         $this->form_validation->set_rules('nama_pihak_satu', 'Nama Pihak 1', 'required');
         $this->form_validation->set_rules('nama_pihak_dua', 'Nama Pihak 2', 'required');
-        // $this->form_validation->set_rules('id_mediator', 'Nama Mediator', 'required');
         $this->form_validation->set_rules('tgl_mediasi', 'Tanggal Mediasi', 'required');
         $this->form_validation->set_rules('waktu_mediasi', 'Waktu Mediasi', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
@@ -47,8 +44,7 @@ class Agenda extends CI_Controller
             } while ($this->agenda_model->is_nomor_mediasi_exists($nomor_mediasi));
 
             $user_id = $this->session->userdata('user_id');
-            
-            // Collect form data without id_mediator
+
             $agenda_data = array(
                 'nomor_mediasi' => $nomor_mediasi,
                 'nama_pihak_satu' => $this->input->post('nama_pihak_satu'),
@@ -62,27 +58,15 @@ class Agenda extends CI_Controller
                 'deskripsi_kasus' => $this->input->post('deskripsi_kasus')
             );
 
-            // Pass the data to the model to insert into the database
             $this->agenda_model->add_agenda($agenda_data);
 
-            // Redirect to the agenda list page
             redirect('agenda');
         }
     }
 
     public function detail($id = null)
     {
-        if (!$id) {
-            redirect('agenda');
-        }
-
-        // Ambil data berdasarkan ID
         $data['agenda'] = $this->agenda_model->get_agenda_by_id($id);
-
-        // Jika data tidak ditemukan
-        if (empty($data['agenda'])) {
-            show_404();
-        }
 
         $this->load->view('frontend/partials/header');
         $this->load->view('frontend/pages/agenda_detail', $data);

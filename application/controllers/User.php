@@ -7,11 +7,10 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('User_model'); // Memuat model User_model
-        $this->load->library('form_validation'); // Memuat library form_validation
+        $this->load->model('User_model');
+        $this->load->library('form_validation');
     }
 
-    // Fungsi untuk menampilkan halaman utama data user
     public function index()
     {
         if (
@@ -22,12 +21,10 @@ class User extends CI_Controller
             redirect('auth/login');
         }
 
-        // Mengambil data users
         $data['users'] = $this->User_model->get_users();
 
-        // Menampilkan view
         $this->load->view('backend/partials/header');
-        $this->load->view('backend/user/view', $data); // Ganti view 'admin/view' ke 'user/index'
+        $this->load->view('backend/user/view', $data);
         $this->load->view('backend/partials/footer');
     }
 
@@ -119,9 +116,8 @@ class User extends CI_Controller
         $this->form_validation->set_rules('telp', 'Telepon', 'required');
 
         if ($this->form_validation->run() === FALSE) {
-            // Tampilkan form edit dengan data user yang ada
             $this->load->view('backend/partials/header');
-            $this->load->view('backend/user/edit', ['user' => $user]); // View edit user
+            $this->load->view('backend/user/edit', ['user' => $user]);
             $this->load->view('backend/partials/footer');
         } else {
             // Data yang akan diupdate
@@ -175,12 +171,9 @@ class User extends CI_Controller
     // Delete user
     public function delete($id)
     {
-        // Check if user has access
         if ($this->session->userdata('logged_in') && in_array($this->session->userdata('user_type'), ['admin'])) {
-            // First, delete related data from the other tables
             $this->User_model->delete_related_data($id);
 
-            // Then delete the user
             $this->User_model->delete_user($id);
 
             $this->session->set_flashdata('success', 'User berhasil dihapus beserta data terkait.');
