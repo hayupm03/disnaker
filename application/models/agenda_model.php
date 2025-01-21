@@ -9,6 +9,7 @@ class Agenda_model extends CI_Model
         $this->db->select('agenda_mediasi.*, mediator.nama as nama_mediator');
         $this->db->from('agenda_mediasi');
         $this->db->join('mediator', 'mediator.id_mediator = agenda_mediasi.id_mediator', 'left');
+        $this->db->order_by('agenda_mediasi.tgl_mediasi', 'DESC');
         if ($id !== NULL) {
             $this->db->where('agenda_mediasi.id_pelapor', $id);
         }

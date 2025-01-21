@@ -10,6 +10,7 @@ class Laporan_model extends CI_Model
         $this->db->select('laporan_mediasi.*, agenda_mediasi.nama_pihak_satu, agenda_mediasi.nama_pihak_dua, agenda_mediasi.tgl_mediasi, agenda_mediasi.jenis_kasus, agenda_mediasi.tempat');
         $this->db->from('laporan_mediasi');
         $this->db->join('agenda_mediasi', 'agenda_mediasi.id = laporan_mediasi.id_agenda', 'left');
+        $this->db->order_by('agenda_mediasi.tgl_mediasi', 'DESC');
         $query = $this->db->get();
         return $query->result_array();
     }
