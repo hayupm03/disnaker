@@ -23,15 +23,12 @@ $sql = "SELECT
     l.hasil_mediasi
 FROM 
     agenda_mediasi a
-LEFT JOIN 
+INNER JOIN 
     laporan_mediasi l 
 ON 
     a.id = l.id_agenda
 WHERE 
-    a.status = 'disetujui'
-    OR l.status = 'selesai'
-    OR l.status = 'gagal'
-    OR l.status = 'dilanjut ke pengadilan'
+    l.status IN ('selesai', 'gagal', 'dilanjut ke pengadilan')
 ORDER BY 
     a.tgl_mediasi DESC;";
 

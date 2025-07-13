@@ -21,41 +21,42 @@ class Profile extends CI_Controller
 
     public function index()
     {
-        // Ambil user ID dari session
         $userId = $this->session->userdata('user_id');
 
         if (!$userId) {
-            redirect('login'); // Redirect jika belum login
+            redirect('login');
         }
 
-        // Ambil data user dari tabel `users`
         $userData = $this->Profile_model->get_user_by_id($userId);
 
         if (!$userData) {
             show_error('User tidak ditemukan.');
         }
 
-        // Cek data di tabel terkait (admin, mediator, pelapor)
         $adminData = $this->Profile_model->get_admin_by_user_id($userId);
         $mediatorData = $this->Profile_model->get_mediator_by_user_id($userId);
         $pelaporData = $this->Profile_model->get_pelapor_by_user_id($userId);
 
-        // Tentukan data profil berdasarkan role
         $userDetails = [];
+        $profileImage = null;
+
         if ($adminData) {
             $userDetails = $adminData;
+            $profileImage = $adminData['profile'] ?? null;
         } elseif ($mediatorData) {
             $userDetails = $mediatorData;
+            $profileImage = $mediatorData['profile'] ?? null;
         } elseif ($pelaporData) {
             $userDetails = $pelaporData;
+            $profileImage = $pelaporData['profile'] ?? null;
         }
 
         $data = [
             'user' => $userData,
-            'user_details' => $userDetails
+            'user_details' => $userDetails,
+            'profile_image' => $profileImage
         ];
 
-        // Load view
         $this->load->view('backend/partials/header', $data);
         $this->load->view('backend/profile/view', $data);
         $this->load->view('backend/partials/footer');
@@ -68,19 +69,18 @@ class Profile extends CI_Controller
             redirect('login');
         }
 
-        // Validasi umum
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('phone', 'Nomor Telepon', 'required');
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
 
-        // Validasi password jika salah satu diisi
-        if (
-            !empty($this->input->post('current_password')) ||
-            !empty($this->input->post('new_password')) ||
-            !empty($this->input->post('confirm_password'))
-        ) {
+        $current_password = $this->input->post('current_password');
+        $new_password = $this->input->post('new_password');
+        $confirm_password = $this->input->post('confirm_password');
+
+        if (!empty($current_password) || !empty($new_password) || !empty($confirm_password)) {
             $this->form_validation->set_rules('current_password', 'Password Lama', 'required');
-            $this->form_validation->set_rules('new_password', 'Password Baru', 'min_length[6]');
-            $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password Baru', 'matches[new_password]');
+            $this->form_validation->set_rules('new_password', 'Password Baru', 'required|min_length[6]');
+            $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password Baru', 'required|matches[new_password]');
         }
 
         if ($this->form_validation->run() == FALSE) {
@@ -88,19 +88,14 @@ class Profile extends CI_Controller
             redirect('profile');
         }
 
-        // Update data umum
-        $data_users = [
-            'email' => $this->input->post('email')
-        ];
+        // Upload gambar baru kalau ada
+        $profile_image = $this->upload_image();
 
-        $current_password = $this->input->post('current_password');
-        $new_password = $this->input->post('new_password');
+        $data_users = ['email' => $this->input->post('email')];
 
         if (!empty($current_password)) {
             if ($this->Profile_model->verify_password($user_id, $current_password)) {
-                if (!empty($new_password)) {
-                    $data_users['password'] = password_hash($new_password, PASSWORD_BCRYPT);
-                }
+                $data_users['password'] = password_hash($new_password, PASSWORD_BCRYPT);
             } else {
                 $this->session->set_flashdata('error', 'Password lama salah.');
                 redirect('profile');
@@ -109,12 +104,16 @@ class Profile extends CI_Controller
 
         $this->Profile_model->update_user($user_id, $data_users);
 
-        // Cek peran pengguna dan update tabel terkait
         $role = $this->Profile_model->get_user_role($user_id);
+
         $data_role = [
             'telp' => $this->input->post('phone'),
-            'nama' => $this->input->post('nama')
+            'nama' => $this->input->post('nama'),
         ];
+
+        if ($profile_image !== false && $profile_image !== null) {
+            $data_role['profile'] = $profile_image;
+        }
 
         switch ($role) {
             case 'pelapor':
@@ -131,8 +130,35 @@ class Profile extends CI_Controller
                 redirect('profile');
         }
 
+        // Session update untuk nama dan profile dari role saja
+        $this->session->set_userdata([
+            'user_name' => $data_role['nama'],
+            'user_profile' => isset($data_role['profile']) ? $data_role['profile'] : $this->session->userdata('user_profile')
+        ]);
+
         $this->session->set_flashdata('success', 'Profil berhasil diperbarui.');
         redirect('profile');
+    }
+
+
+    private function upload_image()
+    {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+        $config['max_size'] = 2048; // 2MB
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('profile_image')) {
+            // Jika tidak ada file yang diupload, return null
+            if (empty($_FILES['profile_image']['name'])) {
+                return null;
+            }
+            return false;
+        } else {
+            return $this->upload->data('file_name');
+        }
     }
 
     public function profile()

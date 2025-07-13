@@ -69,13 +69,6 @@
                     <?php echo form_error('jenis_kasus', '<small class="text-danger">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <label for="file_pdf">Upload file</label>
-                    <input type="file" name="file_pdf" class="form-control">
-                    <?php if (isset($upload_error)) : ?>
-                        <small class="text-danger"><?php echo $upload_error; ?></small>
-                    <?php endif; ?>
-                </div>
-                <div class="form-group">
                     <label for="deskripsi_kasus">Deskripsi Kasus</label>
                     <input type="text" class="form-control" id="deskripsi_kasus" name="deskripsi_kasus" value="<?php echo set_value('deskripsi_kasus'); ?>">
                     <?php echo form_error('deskripsi_kasus', '<small class="text-danger">', '</small>'); ?>

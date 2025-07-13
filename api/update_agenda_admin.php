@@ -6,7 +6,7 @@ header("Content-Type: application/json");
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Validasi parameter wajib
-$required_fields = ['id', 'id_mediator', 'status', 'waktu_mediasi', 'tgl_mediasi'];
+$required_fields = ['id', 'id_mediator'];
 foreach ($required_fields as $field) {
     if (!isset($data[$field])) {
         echo json_encode([
@@ -19,19 +19,6 @@ foreach ($required_fields as $field) {
 
 $id = (int) $data['id'];
 $id_mediator = (int) $data['id_mediator'];
-$status = $conn->real_escape_string($data['status']);
-$waktu_mediasi = $conn->real_escape_string($data['waktu_mediasi']);
-$tgl_mediasi = $conn->real_escape_string($data['tgl_mediasi']);
-
-// Validasi nilai status
-$valid_status = ['disetujui', 'ditolak', 'diproses'];
-if (!in_array($status, $valid_status)) {
-    echo json_encode([
-        "status" => false,
-        "message" => "Status tidak valid, pilih antara: disetujui, ditolak, atau diproses"
-    ]);
-    exit();
-}
 
 // Cek apakah data dengan ID tersebut ada
 $sql_check = "SELECT id FROM agenda_mediasi WHERE id = $id";
@@ -48,10 +35,7 @@ if ($result->num_rows === 0) {
 // Update data
 $sql_update = "
     UPDATE agenda_mediasi 
-    SET id_mediator = $id_mediator, 
-        status = '$status', 
-        waktu_mediasi = '$waktu_mediasi', 
-        tgl_mediasi = '$tgl_mediasi'
+    SET id_mediator = $id_mediator
     WHERE id = $id
 ";
 

@@ -74,4 +74,13 @@ class Profile_model extends CI_Model
     {
         $this->db->where('id_user', $user_id)->update('admin', $data);
     }
+
+    public function get_profile_image($user_id)
+    {
+        $this->db->select('profile');
+        $this->db->where('id', $user_id);
+        $query = $this->db->get('users');
+        $result = $query->row();
+        return $result ? $result->profile_image : null;
+    }
 }

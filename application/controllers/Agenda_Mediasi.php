@@ -122,7 +122,6 @@ class Agenda_mediasi extends CI_Controller
         $this->form_validation->set_rules('tgl_mediasi', 'Tanggal Mediasi', 'required');
         $this->form_validation->set_rules('waktu_mediasi', 'Waktu Mediasi', 'required');
         $this->form_validation->set_rules('status', 'Status', 'required');
-        $this->form_validation->set_rules('tempat', 'Tempat', 'required');
         $this->form_validation->set_rules('jenis_kasus', 'Jenis Kasus', 'required');
         $this->form_validation->set_rules('deskripsi_kasus', 'Deskripsi Kasus', 'required');
 
