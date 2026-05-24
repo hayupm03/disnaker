@@ -34,21 +34,21 @@
                 <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" class="form-control" id="nama" name="nama"
-                        value="<?= isset($user_details['nama']) ? $user_details['nama'] : ''; ?>" required>
+                        value="<?= isset($user_details['nama']) ? htmlspecialchars($user_details['nama']) : ''; ?>" required>
                 </div>
 
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email"
-                        value="<?= $user['email']; ?>" required>
+                        value="<?= htmlspecialchars($user['email']); ?>" required>
                 </div>
 
                 <!-- Nomor Telepon -->
                 <div class="form-group">
                     <label for="phone">Nomor Telepon</label>
                     <input type="text" class="form-control" id="phone" name="phone"
-                        value="<?= isset($user_details['telp']) ? $user_details['telp'] : ''; ?>" required>
+                        value="<?= isset($user_details['telp']) ? htmlspecialchars($user_details['telp']) : ''; ?>" required>
                 </div>
 
                 <!-- Deskripsi Opsional -->

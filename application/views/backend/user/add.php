@@ -29,7 +29,7 @@
                 <!-- Input for Password -->
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" value="<?php echo set_value('password'); ?>">
+                    <input type="password" class="form-control" id="password" name="password">
                     <?php echo form_error('password', '<small class="text-danger">', '</small>'); ?>
                 </div>
 

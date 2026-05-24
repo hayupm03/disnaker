@@ -13,7 +13,7 @@
                         <option value="">- Pilih Agenda Mediasi -</option>
                         <?php foreach ($agenda_mediasi as $agenda): ?>
                             <option value="<?= $agenda->id ?>" <?= set_select('agenda_mediasi_id', $agenda->id); ?>>
-                                <?= $agenda->nama_pihak_satu ?> dan <?= $agenda->nama_pihak_dua ?> - <?= $agenda->nama_kasus ?>
+                                <?= htmlspecialchars($agenda->nama_pihak_satu) ?> dan <?= htmlspecialchars($agenda->nama_pihak_dua) ?> - <?= htmlspecialchars($agenda->nama_kasus) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

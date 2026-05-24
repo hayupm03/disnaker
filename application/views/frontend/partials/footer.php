@@ -80,8 +80,8 @@
 <!-- Smooth Scroll js -->
 <script src="<?= base_url('assets/') ?>plugins/smooth-scroll/smooth-scroll.min.js"></script>
 <!-- Google Map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU"></script>
-<script src="plugins/google-map/gmap.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= htmlspecialchars($this->config->item('google_maps_key')); ?>"></script>
+<script src="<?= base_url('assets/plugins/google-map/gmap.js'); ?>"></script>
 
 <!-- Custom js -->
 <script src="<?= base_url('assets/') ?>js/script.js"></script>

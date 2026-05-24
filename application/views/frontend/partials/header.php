@@ -87,11 +87,6 @@ Fixed Navigation
                 <a class="nav-link" href="<?php echo base_url('agenda'); ?>">Agenda</a>
               </li>
 
-              <!-- Nav Item - Arsip -->
-              <li class="nav-item <?php echo ($this->uri->segment(1) == 'arsip') ? 'active' : ''; ?>">
-                <a class="nav-link" href="<?php echo base_url('arsip'); ?>">Arsip</a>
-              </li>
-
               <!-- Nav Item - Kontak -->
               <li class="nav-item <?php echo ($this->uri->segment(1) == 'kontak') ? 'active' : ''; ?>">
                 <a class="nav-link" href="<?php echo base_url('kontak'); ?>">Kontak</a>
@@ -102,7 +97,7 @@ Fixed Navigation
                 <?php if ($this->session->userdata('logged_in')): ?>
                   <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <?= $this->session->userdata('user_name'); ?>
+                      <?= htmlspecialchars($this->session->userdata('user_name')); ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" href="<?= base_url('profile/profile'); ?>">Profile</a>

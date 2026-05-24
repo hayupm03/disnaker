@@ -112,7 +112,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <?= $this->session->userdata('user_name'); ?>
+                                    <?= htmlspecialchars($this->session->userdata('user_name')); ?>
                                 </span>
 
                                 <?php
@@ -121,7 +121,7 @@
                                 ?>
 
                                 <img class="img-profile rounded-circle"
-                                    src="<?= base_url('uploads/') . $profileImage; ?>">
+                                    src="<?= base_url('uploads/') . htmlspecialchars($profileImage); ?>">
                             </a>
 
                             <!-- Dropdown - User Information -->

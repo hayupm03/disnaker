@@ -16,7 +16,24 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form action="<?= base_url('profile/update'); ?>" method="POST" novalidate>
+                <?php if (!empty($profile_image)): ?>
+                    <div class="text-center mb-4">
+                        <img src="<?= base_url('uploads/' . htmlspecialchars($profile_image)); ?>" alt="Profile Image" class="img-thumbnail" width="200">
+                    </div>
+                <?php else: ?>
+                    <div class="text-center mb-4">
+                        <img src="<?= base_url('assets/img/default-profile.png'); ?>" alt="Default Profile" class="img-thumbnail" width="200">
+                    </div>
+                <?php endif; ?>
+
+                <form action="<?= base_url('profile/update'); ?>" method="POST" enctype="multipart/form-data">
+                    <!-- Gambar Profile -->
+                    <div class="form-group">
+                        <label for="profile_image">Gambar Profile</label>
+                        <input type="file" class="form-control-file" id="profile_image" name="profile_image" accept="image/*">
+                        <small class="form-text text-muted">Format: JPG, PNG, GIF (Maksimal 2MB)</small>
+                    </div>
+
                     <!-- Nama -->
                     <div class="form-group">
                         <label for="nama">Nama</label>

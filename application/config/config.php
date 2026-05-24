@@ -530,3 +530,22 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| Google Maps API Key
+|--------------------------------------------------------------------------
+*/
+$config['google_maps_key'] = 'AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU';
+
+/*
+|--------------------------------------------------------------------------
+| DISNAKER Service URLs
+|--------------------------------------------------------------------------
+*/
+$config['service_urls'] = [
+    'kartu_kuning' => 'https://disnaker.semarangkota.go.id/layanan/wShPi3EwHGSEUpfH7xpjBVdy6wmLojGGy8HNOXCVgrfZ2FOQflKrUXRPLQyHU02i',
+    'rekom_paspor' => 'https://disnaker.semarangkota.go.id/layanan/DFQmrdPkp4HeBa3s9OeitrMyK5hO7bXN5MW7xUo3TBLYEEUEXhpuI6O0iyu5ygiu',
+    'pelatihan_blk' => 'https://disnaker.semarangkota.go.id/layanan/37SuIkS8q76XSIZJxrHDhEOXuqpQByx58gnz6sBket0OQ1ov0ge2u1puLt7tV6YL',
+    'hubungan_industrial' => 'https://disnaker.semarangkota.go.id/layanan/2mFwm5h6VHIongDOult53LCS7PQuirccLGlhMPF5s4vzSTEkOC7KXunbrcVgIsld',
+];

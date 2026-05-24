@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title><?= $title; ?></title>
+    <title><?= htmlspecialchars($title); ?></title>
     <style>
         /* Styling untuk kop surat */
         .header {
@@ -107,12 +107,12 @@
             foreach ($media as $row): ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $row['nama_kasus']; ?></td>
-                    <td><?= $row['nama_mediator']; ?></td>
-                    <td><?= $row['nama_pihak_satu']; ?></td>
-                    <td><?= $row['nama_pihak_dua']; ?></td>
-                    <td><?= $row['status']; ?></td>
-                    <td><?= $row['hasil_mediasi']; ?></td>
+                    <td><?= htmlspecialchars($row['nama_kasus']); ?></td>
+                    <td><?= htmlspecialchars($row['nama_mediator']); ?></td>
+                    <td><?= htmlspecialchars($row['nama_pihak_satu']); ?></td>
+                    <td><?= htmlspecialchars($row['nama_pihak_dua']); ?></td>
+                    <td><?= htmlspecialchars($row['status']); ?></td>
+                    <td><?= htmlspecialchars($row['hasil_mediasi']); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

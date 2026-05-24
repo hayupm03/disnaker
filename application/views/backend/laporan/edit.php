@@ -9,7 +9,7 @@
                 <!-- Menampilkan informasi agenda mediasi yang sudah dipilih -->
                 <div class="form-group">
                     <label for="agenda_mediasi_id">Agenda Mediasi</label>
-                    <input type="text" class="form-control" name="agenda_mediasi_id" id="agenda_mediasi_id" readonly value="<?= $laporan['nama_pihak_satu'] ?> dan <?= $laporan['nama_pihak_dua'] ?> - <?= $laporan['nama_kasus'] ?>">
+                    <input type="text" class="form-control" name="agenda_mediasi_id" id="agenda_mediasi_id" readonly value="<?= htmlspecialchars($laporan['nama_pihak_satu']) ?> dan <?= htmlspecialchars($laporan['nama_pihak_dua']) ?> - <?= htmlspecialchars($laporan['nama_kasus']) ?>">
                     <input type="hidden" name="agenda_mediasi_id" value="<?= $laporan['id_agenda'] ?>">
                 </div>
 
